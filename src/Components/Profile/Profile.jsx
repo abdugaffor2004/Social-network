@@ -1,13 +1,14 @@
 import MainImage from './MainImage/MainImage'
 import MyPosts from './MyPosts/MyPosts'
-import s from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
+import s from './Profile.module.css'
+import '../../reset.css'
  
  const Profile = () =>{
 
     return(
 
-        <div className= {s.content}> 
+        <div className= {s.profileWrapper}> 
             
         <div className={s.container}>
             <MainImage />

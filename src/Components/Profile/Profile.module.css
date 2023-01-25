@@ -1,11 +1,10 @@
 
-.content{
+.profileWrapper{
     background-color: darkgoldenrod;
 }
 
 .container{
-    width: 1400px;
-    padding: 0 15px 0 15px;
+    width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }

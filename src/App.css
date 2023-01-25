@@ -24,6 +24,6 @@
   background-color: coral;
 }
 
-.content{
+.profileWrapper{
   grid-area: c;
 }
