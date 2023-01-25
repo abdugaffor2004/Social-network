@@ -4,7 +4,7 @@
 
     return(
 
-        <div> <img src="https://images.unsplash.com/photo-1674594145584-354a3e88e9b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw2OXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="mainImg" /> </div>
+        <img className= {s.mainImg} src="https://plus.unsplash.com/premium_photo-1667682998369-1d1ea5b253c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="mainImg" /> 
 
     )
 

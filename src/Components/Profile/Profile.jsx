@@ -7,11 +7,22 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 
     return(
 
-        <div className="content"> 
+        <div className= {s.content}> 
             
-        <MainImage />
-        <ProfileInfo />
-        <MyPosts />
+        <div className={s.container}>
+            <MainImage />
+        </div>    
+        
+        <div className={s.container}>
+            <ProfileInfo />
+        </div>   
+
+        <div className={s.container}>
+            <MyPosts />
+        </div>   
+
+        
+        
 
         </div>
 
