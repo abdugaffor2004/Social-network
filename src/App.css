@@ -10,20 +10,11 @@
 
 }
 
-.header{
-  grid-area: h;
-  background-color: aquamarine;
-}
-
-.header img{
-  max-width: 50px;
-}
-
 .nav{
   grid-area: n;
   background-color: coral;
 }
 
-.profileWrapper{
+/* .profileWrapper{
   grid-area: c;
-}
+}  */
