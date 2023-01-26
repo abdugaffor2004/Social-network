@@ -14,8 +14,11 @@ import Post from './Post/Post'
 
            <div className= {s.controlls}> <button className= {s.btn} type="submit"> Send </button> </div> 
 
-            <Post />
-
+            <div className="posts">
+                <Post />
+                <Post />
+            </div>
+            
         </div>
 
     )
