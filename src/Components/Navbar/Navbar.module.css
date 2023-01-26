@@ -7,8 +7,19 @@
     align-items: center;
     padding-top: 50px;
     font-size: 21px;
+    color: #fff;
 }
+
+
 
 .navItem  + .navItem{
     padding-top: 10px;
+}
+
+.navItem{
+    transition: color 0.2s ease-in;
+}
+
+.navItem:hover{
+    color: #000;
 }
