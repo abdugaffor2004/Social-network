@@ -1,6 +1,8 @@
 .appWrapper{
   display: grid;
 
+  row-gap: 10px;
+  column-gap: 10px;
   grid-template-areas: 
   'h h'
   'n c'
@@ -10,10 +12,10 @@
 
 }
 
-.nav{
+/* .nav{
   grid-area: n;
   background-color: coral;
-}
+} */
 
 /* .profileWrapper{
   grid-area: c;

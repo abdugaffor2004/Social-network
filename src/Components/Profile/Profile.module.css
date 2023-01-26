@@ -1,6 +1,5 @@
 
 .profileWrapper{
-    background-color: darkgoldenrod;
     grid-area: c;
     /* Это относится к display: grid; в App.css */
 }

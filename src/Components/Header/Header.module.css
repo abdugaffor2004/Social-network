@@ -1,5 +1,5 @@
 .header{
-    background-color: aquamarine;
+    background-color: rgb(13, 180, 102);
     grid-area: h; 
     /* Это относится к display: grid; в App.css */
     display: flex;
@@ -7,7 +7,7 @@
 }
 
 .header img{
-    max-width: 50px;
+    max-width: 40px;
     margin-left: 20px;
 }
 

@@ -3,15 +3,15 @@ import s from './Navbar.module.css'
 const Navbar = () => {
     
 return(
-    <nav className='nav'>
+  <nav className={s.nav}>
 
-        <div>Profile</div>
-        <div>Messages</div>
-        <div>News</div>
-        <div>Music</div>
-        <div>Settings</div>
+    <div className={s.navItem}> <a href="#">Profile</a> </div>
+    <div className={s.navItem}> <a href="#">Messages</a> </div>
+    <div className={s.navItem}> <a href="#">News</a> </div>
+    <div className={s.navItem}> <a href="#">Music</a> </div>
+    <div className={s.navItem}> <a href="#">Settings</a> </div>
 
-      </nav> 
+  </nav> 
 );
 
 }
