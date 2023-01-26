@@ -1,0 +1,31 @@
+.myPosts{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+}
+
+.myPosts h3{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.controlls{
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.newPost textarea{
+    width: 600px;
+    resize: vertical;
+    outline: none;
+    background: rgb(193, 193, 193);
+    padding: 10px 0 0 15px ;
+}
+
+.btn{
+    background-color: rgb(4, 165, 4);
+    padding: 5px 20px;
+}

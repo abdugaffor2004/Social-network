@@ -1,21 +1,20 @@
- import s from './MyPosts.module.css'
+import s from './MyPosts.module.css'
+import Post from './Post/Post'
  
  const MyPosts = () =>{
 
     return(
 
-        <div>
+        <div className={s.myPosts}>
             <h3>My posts</h3>
 
-            <div>
-                New post
-            </div>
+            <form action='#' className= {s.newPost}>
+                <textarea placeholder='your news...'  rows="3"></textarea>
+            </form>
 
-            <div className="posts">
-                <div>
-                    post 1
-                </div>
-            </div>
+           <div className= {s.controlls}> <button className= {s.btn} type="submit"> Send </button> </div> 
+
+            <Post />
 
         </div>
 
