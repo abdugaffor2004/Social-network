@@ -8,7 +8,7 @@ import '../../reset.css'
 
     return(
 
-        <div className= {s.profileWrapper}> 
+        <div> 
             
         <div className={s.container}>
             <MainImage />

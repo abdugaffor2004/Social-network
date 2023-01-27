@@ -12,6 +12,13 @@
 
 }
 
+.appWrapper_content{
+  
+  grid-area: c;
+  /* Это относится к display: grid; в App.css; Остальные в своих компонентах */
+
+}
+
 /* .nav{
   grid-area: n;
   background-color: coral;

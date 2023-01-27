@@ -1,9 +1,4 @@
 
-.profileWrapper{
-    grid-area: c;
-    /* Это относится к display: grid; в App.css */
-}
-
 .container{
     width: 1200px;
     margin-left: auto;
