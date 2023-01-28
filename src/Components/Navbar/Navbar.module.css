@@ -20,6 +20,10 @@
     transition: color 0.2s ease-in;
 }
 
+.navItem a.active{
+    color: #000;
+}
+
 .navItem:hover{
     color: #000;
 }
