@@ -1,0 +1,27 @@
+
+
+.dialogsItem{
+    display: flex;
+    flex-direction: column;
+}
+
+.dialogsItem h2{
+    font-size: 28px;
+    margin-left: 10px;
+}
+
+.dialogsItem ul{
+    list-style-type: disc;
+    margin-left: 50px;
+}
+
+.dialogsItem ul li::marker{
+    color: grey
+}
+
+.dialogsItem .dialog{
+    font-size: 18px;
+    color: grey;
+    margin-top: 32px;
+}
+
