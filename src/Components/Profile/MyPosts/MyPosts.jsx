@@ -17,6 +17,9 @@ import Post from './Post/Post'
         message: "I am fun of React! "}
     ]
 
+    let postsElements = postsData.map( item =>  <Post img={item.img} message={item.message} />)
+
+
     return(
 
         <div className={s.myPosts}>
@@ -29,13 +32,9 @@ import Post from './Post/Post'
 
 
             <div className="posts">
-                <Post img={postsData[0].img} message={postsData[0].message}/>
+                
+                {postsElements}
 
-                <Post img={postsData[1].img} message={postsData[1].message}/>
-
-                <Post img={postsData[2].img} message={postsData[2].message}/>
-
-                <Post img={postsData[3].img} message={postsData[3].message}/>
             </div>
             
         </div>
