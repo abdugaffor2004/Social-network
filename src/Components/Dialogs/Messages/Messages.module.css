@@ -1,10 +1,4 @@
 
-.messages{
-    border-left: 2px rgb(182, 114, 182) solid;
-    padding-left: 60px;
-    margin-top: 64px;
-}
-
 .message + .message{
     margin-top: 20px;
 }
