@@ -16,7 +16,7 @@ const App = () => {
 
     <BrowserRouter>
       <div className='appWrapper'>
-        
+
         <Header />
 
         <Navbar />
@@ -29,7 +29,7 @@ const App = () => {
             <Route path='/news/*' element={<News />}/>
             <Route path='/music/*' element={<Music />} />
             <Route path='/settings/*' element={<Settings />} />
-            {/* Звевдочка ставится чтобв Rout также отслеживал вложенные пути ввида /dialogs/3 */}
+            {/* Звевдочка ставится чтобы Rout также отслеживал вложенные пути ввида /dialogs/3 */}
           </Routes>
         
         </div>

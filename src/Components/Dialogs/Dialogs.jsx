@@ -32,6 +32,7 @@ const Dialogs = (props) => {
                 <h2>DIALOGS</h2>
 
                 {dialogsElements}
+                
 
             </div>
 
