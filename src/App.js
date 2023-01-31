@@ -10,7 +10,7 @@ import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 
 
-const App = () => {
+const App = (props) => {
 
   return (
 
@@ -24,8 +24,8 @@ const App = () => {
         <div className='appWrapper_content'>
         
           <Routes>
-            <Route path="/profile/*" element={<Profile />}/> 
-            <Route path="/dialogs/*" element={<Dialogs />}/>
+            <Route path="/profile/*" element={<Profile postsData={props.postsData} />}/> 
+            <Route path="/dialogs/*" element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData}/>}/>
             <Route path='/news/*' element={<News />}/>
             <Route path='/music/*' element={<Music />} />
             <Route path='/settings/*' element={<Settings />} />
