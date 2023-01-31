@@ -1,17 +1,22 @@
 
 
 ul{
-    list-style-type: disc;
-    margin-left: 50px;
+    display: flex;
+    align-items: center;
+    margin: 50px 0 0 50px;
 }
 
-ul li::marker{
-    color: grey
+
+ul img{
+    width: 80px ;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
- .dialog{
-    font-size: 18px;
+.dialog{
+    font-size: 21px;
     color: grey;
-    margin-top: 32px;
+    margin-left: 25px;
 }
 
