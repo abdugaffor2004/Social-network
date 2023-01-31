@@ -3,7 +3,8 @@ import Post from './Post/Post'
  
  const MyPosts = (props) =>{
 
-    let postsElements = props.postsData.map( item =>  <Post img={item.img} message={item.message} />)
+    let postsElements = props.state.map( item =>  <Post img={item.img} message={item.message} />)
+    // state который находится в Profile.jsx
 
     return(
 

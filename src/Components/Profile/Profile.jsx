@@ -6,7 +6,7 @@ import '../../reset.css'
  
  const Profile = (props) =>{
 
-
+    
     return(
 
         <div> 
@@ -20,7 +20,7 @@ import '../../reset.css'
         </div>   
 
         <div className={s.container}>
-            <MyPosts postsData={props.postsData} />
+            <MyPosts state={props.state.postsData} />
         </div>   
 
         
