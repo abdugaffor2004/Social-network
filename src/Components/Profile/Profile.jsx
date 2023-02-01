@@ -3,33 +3,33 @@ import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import s from './Profile.module.css'
 import '../../reset.css'
- 
- const Profile = (props) =>{
 
-    
-    return(
+const Profile = (props) => {
 
-        <div> 
-            
-        <div className={s.container}>
-            <MainImage />
-        </div>    
-        
-        <div className={s.container}>
-            <ProfileInfo />
-        </div>   
 
-        <div className={s.container}>
-            <MyPosts state={props.state.postsData} />
-        </div>   
+    return (
 
-        
-        
+        <div>
+
+            <div className={s.container}>
+                <MainImage />
+            </div>
+
+            <div className={s.container}>
+                <ProfileInfo />
+            </div>
+
+            <div className={s.container}>
+                <MyPosts state={props.state.postsData} />
+            </div>
+
+
+
 
         </div>
 
     )
 
- }
+}
 
- export default Profile
+export default Profile
