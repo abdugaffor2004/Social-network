@@ -1,0 +1,32 @@
+
+.wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.navItem  + .navItem{
+    padding-top: 20px;
+}
+
+.navItem{
+    transition: color 0.2s ease-in;
+}
+
+.navItem a.active{
+    color: #000;
+}
+
+.navItem:hover{
+    color: #000;
+}
+
+
+.friend{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 23px ;
+    width: 100%;
+    
+}

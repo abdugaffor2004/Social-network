@@ -1,16 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import s from './Navbar.module.css'
+import NavbarLinks from './NavbarLinks/NavbarLinks';
 
-const Navbar = () => {
+const Navbar = (props) => {
     
 return(
   <nav className={s.nav}>
 
-    <div className={s.navItem}> <NavLink className={({isActive})=> isActive ? s.active: undefined} to="/profile" >Profile</NavLink> </div>
-    <div className={s.navItem}> <NavLink className={({isActive})=> isActive ? s.active: undefined} to="/dialogs">Messages</NavLink> </div>
-    <div className={s.navItem}> <NavLink className={({isActive})=> isActive ? s.active: undefined} to="/news">News</NavLink> </div>
-    <div className={s.navItem}> <NavLink className={({isActive})=> isActive ? s.active: undefined} to="/music">Music</NavLink> </div>
-    <div className={s.navItem}> <NavLink className={({isActive})=> isActive ? s.active: undefined} to="/settings">Settings</NavLink> </div>
+    <NavbarLinks state={props.state.friends} />
+
     {/* NavLink не работает вне BrowserRouter. Поэтому компонента Navbar должна вызываться в BrowserRouter!  */}
   </nav> 
 );

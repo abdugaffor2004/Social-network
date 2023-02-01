@@ -19,21 +19,21 @@ const App = (props) => {
 
         <Header />
 
-        <Navbar />
+        <Navbar state={props.state.navbar} />
 
         <div className='appWrapper_content'>
-        
+
           <Routes>
-            <Route path="/profile/*" element={<Profile state={props.state.profilePage} />}/> 
-            <Route path="/dialogs/*" element={<Dialogs state={props.state.dialogsPage}/>}/>
-            <Route path='/news/*' element={<News />}/>
+            <Route path="/profile/*" element={<Profile state={props.state.profilePage} />} />
+            <Route path="/dialogs/*" element={<Dialogs state={props.state.dialogsPage} />} />
+            <Route path='/news/*' element={<News />} />
             <Route path='/music/*' element={<Music />} />
             <Route path='/settings/*' element={<Settings />} />
             {/* Звевдочка ставится чтобы Rout также отслеживал вложенные пути ввида /dialogs/3 */}
           </Routes>
-        
+
         </div>
-        
+
 
       </div>
     </BrowserRouter>
