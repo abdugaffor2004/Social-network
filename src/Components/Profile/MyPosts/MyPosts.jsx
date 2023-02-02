@@ -11,7 +11,7 @@ const MyPosts = (props) => {
     let addPostUI = () => {
         const value = textareaAnchor.current.value
         props.addPostBLL(value)
-        props.rerender()
+        textareaAnchor.current.value = ""
     }
 
     return (
@@ -19,12 +19,11 @@ const MyPosts = (props) => {
         <div className={s.myPosts}>
             <h3>My posts</h3>
 
-            <form action='#' className={s.newPost}>
-
+            <div className={s.newPost}>
                 <textarea ref={textareaAnchor} placeholder='your news...' rows="3"></textarea>
 
                 <div className={s.controlls}> <button onClick={addPostUI} className={s.btn} type="submit"> Send </button> </div>
-            </form>
+            </div>
 
 
             <div className="posts">

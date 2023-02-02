@@ -22,7 +22,7 @@ const Profile = (props) => {
             <div className={s.container}>
                 <MyPosts state={props.state.postsData}
                          addPostBLL={props.addPostBLL}
-                         rerender = {props.rerender} />
+                         />
             </div>
 
 

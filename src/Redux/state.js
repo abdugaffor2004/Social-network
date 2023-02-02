@@ -1,3 +1,4 @@
+import { rerenderEntireDOM } from "./render"
 
 let state = {
 
@@ -66,6 +67,8 @@ export let addPostBLL = (messageText) => {
     if(messageText != ''){
         state.profilePage.postsData.push(newPost)
     }
+
+    rerenderEntireDOM(state)
 }
 
 export default state
