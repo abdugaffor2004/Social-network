@@ -20,7 +20,9 @@ const Profile = (props) => {
             </div>
 
             <div className={s.container}>
-                <MyPosts state={props.state.postsData} />
+                <MyPosts state={props.state.postsData}
+                         addPostBLL={props.addPostBLL}
+                         rerender = {props.rerender} />
             </div>
 
 

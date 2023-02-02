@@ -8,9 +8,10 @@ const MyPosts = (props) => {
     // state который находится в Profile.jsx
 
     let textareaAnchor = React.createRef()
-    let addPost = () => {
+    let addPostUI = () => {
         const value = textareaAnchor.current.value
-        alert(value)
+        props.addPostBLL(value)
+        props.rerender()
     }
 
     return (
@@ -22,7 +23,7 @@ const MyPosts = (props) => {
 
                 <textarea ref={textareaAnchor} placeholder='your news...' rows="3"></textarea>
 
-                <div className={s.controlls}> <button onClick={addPost} className={s.btn} type="submit"> Send </button> </div>
+                <div className={s.controlls}> <button onClick={addPostUI} className={s.btn} type="submit"> Send </button> </div>
             </form>
 
 
