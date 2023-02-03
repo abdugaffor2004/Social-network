@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './../index.css';
 import App from './../App';
 import reportWebVitals from './../reportWebVitals';
-import { addPostBLL } from './state.js';
+import { addPostUI, updateNewPostText } from './state.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export let rerenderEntireDOM = (state) =>{
   root.render(
     <React.StrictMode>
-      <App state={state} addPostBLL={addPostBLL}/>
+      <App state={state} addPostUI={addPostUI} updateNewPostText={updateNewPostText}/>
     </React.StrictMode>
   );
 

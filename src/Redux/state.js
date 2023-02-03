@@ -22,6 +22,8 @@ let state = {
                 message: "I am fun of React! "}
         ],
 
+        newPostText: ""
+
     },
 
     dialogsPage: {
@@ -53,21 +55,32 @@ let state = {
 
 }
 
+window.state = state
+
 /* addPostBLL добавляет в state данные нового поста(id, message).
 Эта функция вызывается там где эти данные мы получаем(MyPosts), a именно в функции addPostUI.
 А прокидываем мы ее через пропсы */
 
-export let addPostBLL = (messageText) => {
+
+export let addPostUI = () => {
     let newPost = {
         id: 5,
         img: 'https://images.unsplash.com/photo-1503844281047-cf42eade5ca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGtpdHRlbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-        message: messageText
+        message: state.profilePage.newPostText
     }
 
-    if(messageText != ''){
+    if(state.profilePage.newPostText != ''){
         state.profilePage.postsData.push(newPost)
     }
 
+    state.profilePage.newPostText =""   // очищение textarea после публикации поста
+
+    rerenderEntireDOM(state)
+}
+
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText
     rerenderEntireDOM(state)
 }
 

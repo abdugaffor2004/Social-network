@@ -20,8 +20,10 @@ const Profile = (props) => {
             </div>
 
             <div className={s.container}>
-                <MyPosts state={props.state.postsData}
-                         addPostBLL={props.addPostBLL}
+                <MyPosts profilePage={props.profilePage.postsData}
+                         addPostUI={props.addPostUI}
+                         newPostText = {props.profilePage.newPostText}
+                         updateNewPostText = {props.updateNewPostText}
                          />
             </div>
 
