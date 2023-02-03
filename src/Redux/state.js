@@ -1,4 +1,7 @@
-import { rerenderEntireDOM } from "./render"
+let rerenderEntireDOM = () => {
+    console.log('state Changed')
+}
+
 
 let state = {
 
@@ -82,6 +85,10 @@ export let addPostUI = () => {
 export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText
     rerenderEntireDOM(state)
+}
+
+export const subscribe = (observer) =>{
+    rerenderEntireDOM = observer
 }
 
 export default state
