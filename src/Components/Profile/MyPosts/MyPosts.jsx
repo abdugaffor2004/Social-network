@@ -1,5 +1,4 @@
 import React from 'react'
-import { updateNewPostText } from '../../../Redux/state'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
@@ -16,7 +15,8 @@ const MyPosts = (props) => {
 
     let onPostChange = () => {
         const value = textareaAnchor.current.value
-        updateNewPostText(value)
+        props.updateNewPostText(value)
+        console.log(value)
     }
 
     return (

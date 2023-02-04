@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state from './Redux/state.js';
-import { addPostUI, subscribe, updateNewPostText } from './Redux/state.js';
+import store from './Redux/state';
 import './index.css';
 
 
@@ -12,14 +11,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 export let rerenderEntireDOM = () =>{
   root.render(
     <React.StrictMode>
-      <App state={state} addPostUI={addPostUI} updateNewPostText={updateNewPostText}/>
+      <App state={store.getState()} addPostUI={store.addPostUI.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
     </React.StrictMode>
   );
 
 }
 
 rerenderEntireDOM()
-subscribe(rerenderEntireDOM)
+store.subscribe(rerenderEntireDOM)
 
 
 
