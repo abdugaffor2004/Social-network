@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEWPOST_TEXT = 'UPDATE-NEWPOST-TEXT'
+
 let store = {
 
     _state: {
@@ -123,7 +126,13 @@ let store = {
 
 }
 
+export let addPostActionCreator = () =>{
+    return { type: ADD_POST}
+}
 
+export let updateNewPostActionCreator = (value) =>{
+    return { type: UPDATE_NEWPOST_TEXT, newText: value}
+}
 
 
 /* addPostUI добавляет в state данные нового поста(id, message).

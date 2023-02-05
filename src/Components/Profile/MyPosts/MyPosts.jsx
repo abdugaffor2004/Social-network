@@ -2,6 +2,8 @@ import React from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
+import { addPostActionCreator, updateNewPostActionCreator } from '../../../Redux/state'
+
 const MyPosts = (props) => {
 
     let postsElements = props.profilePage.map(item => <Post img={item.img} message={item.message} />)
@@ -10,12 +12,12 @@ const MyPosts = (props) => {
     let textareaAnchor = React.createRef()
     
     let addPost = () => {
-        props.dispatch( {type:'ADD-POST'}  )
+        props.dispatch( addPostActionCreator() )
     }
 
     let onPostChange = () => {
         const value = textareaAnchor.current.value
-        props.dispatch( {type: 'UPDATE-NEWPOST-TEXT', newText: value} )
+        props.dispatch( updateNewPostActionCreator(value) )
         
     }
 
