@@ -8,16 +8,16 @@ import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-export let rerenderEntireDOM = () =>{
+export let rerenderEntireDOM = (state) =>{
   root.render(
     <React.StrictMode>
-      <App state={store.getState()} addPostUI={store.addPostUI.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
+      <App state={state} dispatch={store.dispatch.bind(store)}/>
     </React.StrictMode>
   );
 
 }
 
-rerenderEntireDOM()
+rerenderEntireDOM(store.getState())  // Первая отрисовка страницы
 store.subscribe(rerenderEntireDOM)
 
 

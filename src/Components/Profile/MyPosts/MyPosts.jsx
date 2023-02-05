@@ -10,13 +10,13 @@ const MyPosts = (props) => {
     let textareaAnchor = React.createRef()
     
     let addPost = () => {
-        props.addPostUI()
+        props.dispatch( {type:'ADD-POST'}  )
     }
 
     let onPostChange = () => {
         const value = textareaAnchor.current.value
-        props.updateNewPostText(value)
-        console.log(value)
+        props.dispatch( {type: 'UPDATE-NEWPOST-TEXT', newText: value} )
+        
     }
 
     return (

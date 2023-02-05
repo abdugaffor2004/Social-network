@@ -21,9 +21,8 @@ const Profile = (props) => {
 
             <div className={s.container}>
                 <MyPosts profilePage={props.profilePage.postsData}
-                         addPostUI={props.addPostUI}
                          newPostText = {props.profilePage.newPostText}
-                         updateNewPostText = {props.updateNewPostText}
+                         dispatch={props.dispatch} 
                          />
             </div>
 
