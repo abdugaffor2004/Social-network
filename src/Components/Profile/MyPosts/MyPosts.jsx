@@ -10,6 +10,7 @@ const MyPosts = (props) => {
     let postsElements = props.profilePage.map(item => <Post img={item.img} message={item.message} />)
     // profilePage который находится в Profile.jsx
 
+    // Получение данных из textarea 1 способ
     let textareaAnchor = React.createRef()
     
     let addPost = () => {
