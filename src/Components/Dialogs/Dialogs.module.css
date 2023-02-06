@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 3fr 9fr ;
     column-gap: 60px;
+    margin-bottom: 50px;
 }
 
 .dialogs h2{
@@ -10,13 +11,22 @@
     margin-left: 10px;
 }
 
+.dialogsItem{
+    border-right: 2px rgb(182, 114, 182) solid;
+    padding-bottom: 50px;
+}
+
 .messages{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    border-left: 2px rgb(182, 114, 182) solid;
-    padding-left: 60px;
-    margin-top: 64px;
+    justify-content: flex-end;
+    
+}
+
+.messagesWrap{
+    display: flex;
+    flex-direction: column;
+
 }
 
 .newMessage textarea{
@@ -25,6 +35,7 @@
     outline: none;
     background: rgb(193, 193, 193);
     padding: 10px 0 0 15px ;
+    margin-top: 40px;
 }
 
 .controlls{

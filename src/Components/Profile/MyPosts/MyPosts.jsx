@@ -2,7 +2,8 @@ import React from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
-import { addPostActionCreator, updateNewPostActionCreator } from '../../../Redux/state'
+import { addPostActionCreator, updateNewPostActionCreator } from '../../../Redux/state'  // Импортируем эти функции потому что это не бизнес логика, а своего рода утилиты
+
 
 const MyPosts = (props) => {
 

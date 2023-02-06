@@ -3,6 +3,7 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogsItem from './DialogsItem/DialogsItem'
 import Messages from './Messages/Messages'
+import { updateMessageActionCreator } from '../../Redux/state'
 
 const Dialogs = (props) => {
 
@@ -12,9 +13,10 @@ const Dialogs = (props) => {
 
     // Получение данных из textarea
     let textareaAnchor = React.createRef() // создаем и вешаем якорь на textarea чтобы потом его найти
-    let newMessage = () => {
+
+    let onMessageChange = () =>{
         const value = textareaAnchor.current.value
-        alert(value)
+        props.dispatch( updateMessageActionCreator(value) )
     }
 
     return (
@@ -30,13 +32,13 @@ const Dialogs = (props) => {
 
             <div className={s.messages}>
 
-                <div>
+                <div className={s.messagesWrap}>
                     {messagesElements}
                 </div>
 
                 <form action='#' className={s.newMessage}>
-                    <textarea ref={textareaAnchor} placeholder='your news...' rows="3"></textarea>
-                    <div className={s.controlls}> <button onClick={newMessage} className={s.btn} type="submit"> Send </button> </div>
+                    <textarea value={props.state.newMessageText} onChange={onMessageChange} ref={textareaAnchor} placeholder='your news...' rows="3"></textarea>
+                    <div className={s.controlls}> <button onClick={''} className={s.btn} type="submit"> Send </button> </div>
                 </form>
 
             </div>

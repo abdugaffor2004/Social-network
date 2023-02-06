@@ -1,5 +1,7 @@
+
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEWPOST_TEXT = 'UPDATE-NEWPOST-TEXT'
+const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'
 
 let store = {
 
@@ -52,7 +54,9 @@ let store = {
                 { id: 2, message: "Hey, yo!" },
                 { id: 3, message: "Inna Lillahi, Ina illahi Radzhiun" }
 
-            ]
+            ],
+
+            newMessageText: "La rahta Fid Dunia"
 
         },
 
@@ -100,8 +104,13 @@ let store = {
 
 
     dispatch(action) {
+        
+        if(action.type === 'UPDATE-NEWPOST-TEXT'){
+            this._state.profilePage.newPostText = action.newText
+            this._rerenderEntireDOM(this._state)
+        }
 
-        if (action.type === 'ADD-POST') {
+        else if (action.type === 'ADD-POST') {
             let newPost = {
                 id: 5,
                 img: 'https://images.unsplash.com/photo-1503844281047-cf42eade5ca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGtpdHRlbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
@@ -116,9 +125,9 @@ let store = {
             this._rerenderEntireDOM(this._state)
         }
 
-        else if(action.type === 'UPDATE-NEWPOST-TEXT'){
-            this._state.profilePage.newPostText = action.newText
-            this._rerenderEntireDOM(this._state)
+        else if(action.type === 'UPDATE-MESSAGE-TEXT'){
+            this._state.dialogsPage.newMessageText = action.newText
+            this._rerenderEntireDOM( this._state )
         }
 
     }
@@ -134,11 +143,15 @@ export let updateNewPostActionCreator = (value) =>{
     return { type: UPDATE_NEWPOST_TEXT, newText: value}
 }
 
+export let updateMessageActionCreator = (value) =>{
+    return { type: UPDATE_MESSAGE_TEXT, newText: value}
+}
+
 
 /* addPostUI добавляет в state данные нового поста(id, message).
 Эта функция вызывается там где эти данные мы получаем(MyPosts), a именно в функции addPost.
 А прокидываем мы ее через пропсы */
 
 
-
+window.state = store._state
 export default store
