@@ -2,6 +2,7 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEWPOST_TEXT = 'UPDATE-NEWPOST-TEXT'
 const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'
+const ADD_MESSAGE = 'ADD-MESSAGE'
 
 let store = {
 
@@ -130,6 +131,20 @@ let store = {
             this._rerenderEntireDOM( this._state )
         }
 
+        else if(action.type === 'ADD-MESSAGE'){
+            let newMessage = {
+                id: 4, 
+                message: this._state.dialogsPage.newMessageText
+            }
+
+            if(this._state.dialogsPage.newMessageText != ""){
+                this._state.dialogsPage.messagesData.push(newMessage)
+            }
+        
+            this._state.dialogsPage.newMessageText = ""
+            this._rerenderEntireDOM( this._state )
+        }
+
     }
 
 
@@ -145,6 +160,10 @@ export let updateNewPostActionCreator = (value) =>{
 
 export let updateMessageActionCreator = (value) =>{
     return { type: UPDATE_MESSAGE_TEXT, newText: value}
+}
+
+export let addMessageActionCreator = () =>{
+    return { type: ADD_MESSAGE}
 }
 
 

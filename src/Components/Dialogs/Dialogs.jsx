@@ -3,7 +3,7 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogsItem from './DialogsItem/DialogsItem'
 import Messages from './Messages/Messages'
-import { updateMessageActionCreator } from '../../Redux/state'
+import { addMessageActionCreator, updateMessageActionCreator } from '../../Redux/state'
 
 const Dialogs = (props) => {
 
@@ -17,6 +17,10 @@ const Dialogs = (props) => {
     let onMessageChange = () =>{
         const value = textareaAnchor.current.value
         props.dispatch( updateMessageActionCreator(value) )
+    }
+
+    let addNewMessage = () =>{
+        props.dispatch( addMessageActionCreator() )
     }
 
     return (
@@ -38,7 +42,7 @@ const Dialogs = (props) => {
 
                 <form action='#' className={s.newMessage}>
                     <textarea value={props.state.newMessageText} onChange={onMessageChange} ref={textareaAnchor} placeholder='your news...' rows="3"></textarea>
-                    <div className={s.controlls}> <button onClick={''} className={s.btn} type="submit"> Send </button> </div>
+                    <div className={s.controlls}> <button onClick={addNewMessage} className={s.btn} type="submit"> Send </button> </div>
                 </form>
 
             </div>
