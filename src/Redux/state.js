@@ -1,3 +1,6 @@
+import dialogsReducer from "./dialogs-reducer"
+import navbarReducer from "./navbar-reducer"
+import profileReducer from "./profile-reducer"
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEWPOST_TEXT = 'UPDATE-NEWPOST-TEXT'
@@ -70,7 +73,7 @@ let store = {
         }
 
     },
-    _rerenderEntireDOM() {
+    _callSubscriber() {
         console.log('state Changed')
     },
 
@@ -78,8 +81,10 @@ let store = {
     getState() {
         return this._state
     },
+
     subscribe(observer) {
-        this._rerenderEntireDOM = observer
+        this._callSubscriber
+ = observer
     },
 
 
@@ -96,54 +101,21 @@ let store = {
 
     //     this._state.profilePage.newPostText = ""   // очищение textarea после публикации поста
 
-    //     this._rerenderEntireDOM(this._state)
+    //     this._callSubscriber(this._state)
     // },
     // updateNewPostText(newText) {
     //     this._state.profilePage.newPostText = newText
-    //     this._rerenderEntireDOM(this._state)
+    //     this._callSubscriber(this._state)
     // },
 
 
     dispatch(action) {
         
-        if(action.type === 'UPDATE-NEWPOST-TEXT'){
-            this._state.profilePage.newPostText = action.newText
-            this._rerenderEntireDOM(this._state)
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.navbar = navbarReducer(this._state.navbar, action)
 
-        else if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                img: 'https://images.unsplash.com/photo-1503844281047-cf42eade5ca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGtpdHRlbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-                message: this._state.profilePage.newPostText
-            }
-
-            if (this._state.profilePage.newPostText != '') {
-                this._state.profilePage.postsData.push(newPost)
-            }
-
-            this._state.profilePage.newPostText = ""   // очищение textarea после публикации поста
-            this._rerenderEntireDOM(this._state)
-        }
-
-        else if(action.type === 'UPDATE-MESSAGE-TEXT'){
-            this._state.dialogsPage.newMessageText = action.newText
-            this._rerenderEntireDOM( this._state )
-        }
-
-        else if(action.type === 'ADD-MESSAGE'){
-            let newMessage = {
-                id: 4, 
-                message: this._state.dialogsPage.newMessageText
-            }
-
-            if(this._state.dialogsPage.newMessageText != ""){
-                this._state.dialogsPage.messagesData.push(newMessage)
-            }
-        
-            this._state.dialogsPage.newMessageText = ""
-            this._rerenderEntireDOM( this._state )
-        }
+        this._callSubscriber(this._state)
 
     }
 
@@ -153,15 +125,14 @@ let store = {
 export let addPostActionCreator = () =>{
     return { type: ADD_POST}
 }
-
 export let updateNewPostActionCreator = (value) =>{
     return { type: UPDATE_NEWPOST_TEXT, newText: value}
 }
 
+
 export let updateMessageActionCreator = (value) =>{
     return { type: UPDATE_MESSAGE_TEXT, newText: value}
 }
-
 export let addMessageActionCreator = () =>{
     return { type: ADD_MESSAGE}
 }
