@@ -11,6 +11,7 @@ import Settings from './Components/Settings/Settings';
 
 
 const App = (props) => {
+
   return (
   
     <BrowserRouter>

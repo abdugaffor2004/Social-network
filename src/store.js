@@ -83,30 +83,9 @@ let store = {
     },
 
     subscribe(observer) {
-        this._callSubscriber
- = observer
+        this._callSubscriber = observer
     },
 
-
-    //     let newPost = {
-        // addPostUI() {
-        //         id: 5,
-        //         img: 'https://images.unsplash.com/photo-1503844281047-cf42eade5ca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGtpdHRlbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-        //         message: this._state.profilePage.newPostText
-        //     }
-
-    //     if (this._state.profilePage.newPostText != '') {
-    //         this._state.profilePage.postsData.push(newPost)
-    //     }
-
-    //     this._state.profilePage.newPostText = ""   // очищение textarea после публикации поста
-
-    //     this._callSubscriber(this._state)
-    // },
-    // updateNewPostText(newText) {
-    //     this._state.profilePage.newPostText = newText
-    //     this._callSubscriber(this._state)
-    // },
 
 
     dispatch(action) {
@@ -122,20 +101,10 @@ let store = {
 
 }
 
-export let addPostActionCreator = () =>{
-    return { type: ADD_POST}
-}
-export let updateNewPostActionCreator = (value) =>{
-    return { type: UPDATE_NEWPOST_TEXT, newText: value}
-}
 
 
-export let updateMessageActionCreator = (value) =>{
-    return { type: UPDATE_MESSAGE_TEXT, newText: value}
-}
-export let addMessageActionCreator = () =>{
-    return { type: ADD_MESSAGE}
-}
+
+
 
 
 /* addPostUI добавляет в state данные нового поста(id, message).

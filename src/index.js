@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './Redux/state';
+import store from './Redux/redux-store';
 import './index.css';
 
 
@@ -13,12 +13,14 @@ export let rerenderEntireDOM = (state) =>{
     <React.StrictMode>
       <App state={state} dispatch={store.dispatch.bind(store)}/>
     </React.StrictMode>
+
   );
 
 }
 
 rerenderEntireDOM(store.getState())  // Первая отрисовка страницы
-store.subscribe(rerenderEntireDOM)
+
+store.subscribe( () => rerenderEntireDOM( store.getState() ) ) // Ререндер после изменения state(набирание текста, доюавление поста)
 
 
 
