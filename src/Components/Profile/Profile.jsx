@@ -1,11 +1,11 @@
 import MainImage from './MainImage/MainImage'
-import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import s from './Profile.module.css'
 import '../../reset.css'
+import MyPostsContainer from './MyPosts/MyPostsContainer'
 
 const Profile = (props) => {
-
+    debugger
 
     return (
 
@@ -20,14 +20,8 @@ const Profile = (props) => {
             </div>
 
             <div className={s.container}>
-                <MyPosts profilePage={props.profilePage.postsData}
-                         newPostText = {props.profilePage.newPostText}
-                         dispatch={props.dispatch} 
-                         />
+                <MyPostsContainer store={props.store}/>
             </div>
-
-
-
 
         </div>
 
