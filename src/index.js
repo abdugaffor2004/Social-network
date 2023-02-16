@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './Redux/redux-store';
 import './index.css';
+import { Provider } from 'react-redux';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -11,11 +12,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 export let rerenderEntireDOM = (state) =>{
   root.render(
     <React.StrictMode>
-      <App state={state} dispatch={store.dispatch.bind(store)} store={store}/>
+
+      <Provider store={store}>
+      <App state={state}  store={store}/>
+      </Provider>
+
     </React.StrictMode>
 
-  );
 
+  );
 }
 
 rerenderEntireDOM(store.getState())  // Первая отрисовка страницы

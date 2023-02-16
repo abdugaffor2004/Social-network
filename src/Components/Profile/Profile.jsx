@@ -5,7 +5,6 @@ import '../../reset.css'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 
 const Profile = (props) => {
-    debugger
 
     return (
 
@@ -20,7 +19,7 @@ const Profile = (props) => {
             </div>
 
             <div className={s.container}>
-                <MyPostsContainer store={props.store}/>
+                <MyPostsContainer/>
             </div>
 
         </div>

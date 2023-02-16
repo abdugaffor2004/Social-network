@@ -1,25 +1,49 @@
+import { connect } from "react-redux";
+import {
+  addPostActionCreator,
+  updateNewPostActionCreator,
+} from "../../../Redux/profile-reducer"; // Импортируем эти функции потому что это не бизнес логика, а своего рода утилиты
+import MyPosts from "./MyPosts";
 
-import { addPostActionCreator, updateNewPostActionCreator } from '../../../Redux/profile-reducer'  // Импортируем эти функции потому что это не бизнес логика, а своего рода утилиты
-import MyPosts from './MyPosts'
+// const MyPostsContainer = (props) => {
+//   let state = props.store.getState();
 
+//   let onAddPost = () => {
+//     props.store.dispatch(addPostActionCreator());
+//   };
 
-const MyPostsContainer = (props) => {
+//   let onPostChange = (value) =>
+//     props.store.dispatch(updateNewPostActionCreator(value));
 
-let state = props.store.getState()
+//   return (
+//     <MyPosts
+//       onAddPost={onAddPost}
+//       onPostChange={onPostChange}
+//       newPostText={state.profilePage.newPostText}
+//       postsData={state.profilePage.postsData}
+//     />
+//   );
+// };  Здесь я создал контейнерную компоненту в ручную
 
-    let onAddPost = () => {
-        props.store.dispatch( addPostActionCreator() )
-    }
+let mapStateToProps = (state) => {
+  return {
+    newPostText: state.profilePage.newPostText,
+    postsData: state.profilePage.postsData,
+  };
+};
 
-    let onPostChange = (value) => props.store.dispatch( updateNewPostActionCreator(value) )
-    
+let mapDispatchToProps = (dispatch) => {
+  return {
+    onAddPost: () => {
+      dispatch(addPostActionCreator());
+    },
 
-    return (
-        <MyPosts onAddPost={onAddPost} onPostChange={onPostChange}
-            newPostText={state.profilePage.newPostText}
-            postsData={state.profilePage.postsData}
-        />
-    )
-}
+    onPostChange: (value) => {
+      dispatch(updateNewPostActionCreator(value));
+    },
+  };
+};
 
-export default MyPostsContainer
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+
+export default MyPostsContainer;
