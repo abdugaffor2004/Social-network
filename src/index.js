@@ -14,7 +14,7 @@ export let rerenderEntireDOM = (state) =>{
     <React.StrictMode>
 
       <Provider store={store}>
-      <App state={state}  store={store}/>
+        <App state={state}  store={store}/>
       </Provider>
 
     </React.StrictMode>

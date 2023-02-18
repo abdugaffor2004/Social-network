@@ -4,7 +4,7 @@ import s from './NavbarLinks.module.css'
 
 const NavbarLinks = (props) => {
 
-  let friendsRender = props.state.map(item => <Friend img={item.img} name={item.name} />)
+  let friendsRender = props.friends.map(item => <Friend img={item.img} name={item.name} />)
 
   return (
 
