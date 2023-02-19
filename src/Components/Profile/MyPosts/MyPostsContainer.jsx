@@ -25,10 +25,12 @@ import MyPosts from "./MyPosts";
 //   );
 // };  Здесь я создал контейнерную компоненту в ручную
 
-let mapStateToProps = (state) => {
+
+
+let mapStateToProps = (stateCopy) => {
   return {
-    newPostText: state.profilePage.newPostText,
-    postsData: state.profilePage.postsData,
+    newPostText: stateCopy.profilePage.newPostText,
+    postsData: stateCopy.profilePage.postsData,
   };
 };
 

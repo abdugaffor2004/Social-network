@@ -33,24 +33,32 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NEWPOST_TEXT:
-      state.newPostText = action.newText;
-      return state;
+    case UPDATE_NEWPOST_TEXT:{
 
-    case ADD_POST:
+      let stateCopy = {...state}
+
+      stateCopy.newPostText = action.newText;
+      return stateCopy;
+    }
+
+    case ADD_POST:{
       let newPost = {
         id: 5,
         img: "https://images.unsplash.com/photo-1503844281047-cf42eade5ca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGtpdHRlbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
         message: state.newPostText,
       };
 
-      if (state.newPostText !== "") {
-        state.postsData.push(newPost);
+      let stateCopy = {...state}
+      stateCopy.postsData = [...state.postsData]
+
+      if (stateCopy.newPostText !== "") {
+        stateCopy.postsData.push(newPost);
       }
 
-      state.newPostText = ""; // очищение textarea после публикации поста
+      stateCopy.newPostText = ""; // очищение textarea после публикации поста
 
-      return state;
+      return stateCopy;
+    }
 
     default:
       return state;
@@ -58,6 +66,8 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export default profileReducer;
+
+
 
 export let addPostActionCreator = () => {
   return { type: ADD_POST };

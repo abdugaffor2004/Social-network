@@ -9,23 +9,20 @@ import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-export let rerenderEntireDOM = (state) =>{
+
   root.render(
     <React.StrictMode>
 
       <Provider store={store}>
-        <App state={state}  store={store}/>
+        <App />
       </Provider>
 
     </React.StrictMode>
 
-
   );
-}
 
-rerenderEntireDOM(store.getState())  // Первая отрисовка страницы
 
-store.subscribe( () => rerenderEntireDOM( store.getState() ) ) // Ререндер после изменения state(набирание текста, доюавление поста)
+// store.subscribe( () => rerenderEntireDOM( store.getState() ) ) // Ререндер после изменения state(набирание текста, доюавление поста)
 
 
 
