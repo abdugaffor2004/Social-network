@@ -40,30 +40,44 @@ let initialState = {
 };
 
 const dialogsReducer = (state = initialState, action) => {
+  
+  /* Здесь есть одна непонятная мне вещь(поставь дебаггер после кейсов и увидишь). 
+  После того как срабатывает Update_message_text 'state=initialState', 
+  который в параметрах не меняется как и должно бытьб но после того как добавляется сообщение этот state меняется на значение newText.
+  Просто я думал что меняется только созданная нами копия. */
+  
   switch (action.type) {
-    case UPDATE_MESSAGE_TEXT:{
-
-      let stateCopy = {...state}
-
-      stateCopy.newMessageText = action.newText;
-      return stateCopy;
+    case UPDATE_MESSAGE_TEXT: {
+      //debugger
+      return {
+        ...state,
+        newMessageText: action.newText,
+      };
     }
 
-    case ADD_MESSAGE:{
-
-      let stateCopy = {...state}
-      stateCopy.messagesData = [...state.messagesData]
-
+    case ADD_MESSAGE: {
+      //debugger;
       let newMessage = {
         id: 4,
         message: state.newMessageText,
       };
 
+      let stateCopy = {
+        ...state,
+        messagesData: [...state.messagesData],
+      };
+
+     /* return {
+        ...state,
+        messagesData: [...state.messagesData, newMessage],
+        newMessageText: ""
+      }; Это лучший вариант. Так написали бы если бы не было проверки */
+
       if (stateCopy.newMessageText !== "") {
         stateCopy.messagesData.push(newMessage);
       }
-   
       stateCopy.newMessageText = "";
+
       return stateCopy;
     }
 
