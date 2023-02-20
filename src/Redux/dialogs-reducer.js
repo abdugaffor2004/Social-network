@@ -36,27 +36,36 @@ let initialState = {
     { id: 3, message: "Inna Lillahi, Ina illahi Radzhiun" },
   ],
 
-  newMessageText: "La rahta Fid Dunia",
+  newMessageText: "",
 };
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_MESSAGE_TEXT:
-      state.newMessageText = action.newText;
-      return state;
+    case UPDATE_MESSAGE_TEXT:{
 
-    case ADD_MESSAGE:
+      let stateCopy = {...state}
+
+      stateCopy.newMessageText = action.newText;
+      return stateCopy;
+    }
+
+    case ADD_MESSAGE:{
+
+      let stateCopy = {...state}
+      stateCopy.messagesData = [...state.messagesData]
+
       let newMessage = {
         id: 4,
         message: state.newMessageText,
       };
 
-      if (state.newMessageText !== "") {
-        state.messagesData.push(newMessage);
+      if (stateCopy.newMessageText !== "") {
+        stateCopy.messagesData.push(newMessage);
       }
-
-      state.newMessageText = "";
-      return state;
+   
+      stateCopy.newMessageText = "";
+      return stateCopy;
+    }
 
     default:
       return state;

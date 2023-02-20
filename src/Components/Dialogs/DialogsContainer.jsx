@@ -31,11 +31,11 @@ import Dialogs from "./Dialogs";
 
 
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (stateCopy) =>{
     return{
-      dialogsData: state.dialogsPage.dialogsData,
-      messagesData: state.dialogsPage.messagesData,
-      newMessageText: state.dialogsPage.newMessageText
+      dialogsData: stateCopy.dialogsPage.dialogsData,
+      messagesData: stateCopy.dialogsPage.messagesData,
+      newMessageText: stateCopy.dialogsPage.newMessageText
     }
 }
 
