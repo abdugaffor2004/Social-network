@@ -7,8 +7,8 @@ import Messages from './Messages/Messages'
 const Dialogs = (props) => {
 
     // Рендеринг DialogsItem и Messages используя данные из state
-    let dialogsElements = props.dialogsData.map(item => <DialogsItem img={item.img} name={item.name} id={item.id} />)
-    let messagesElements = props.messagesData.map(item => <Messages message={item.message} id={item.id} />)
+    let dialogsElements = props.dialogsData.map(item => <DialogsItem key={item.id} img={item.img} name={item.name} id={item.id} />)
+    let messagesElements = props.messagesData.map(item => <Messages key={item.id} message={item.message} id={item.id} />)
 
     
     let onMessageChangeCaller = (event) =>{

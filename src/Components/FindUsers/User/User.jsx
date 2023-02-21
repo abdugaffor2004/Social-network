@@ -1,13 +1,29 @@
 import s from "./User.module.css";
 
 const User = (props) => {
+
+
+const unfollowCaller = ()=>{
+  props.unfollow(props.userId)
+  
+}
+
+const followCaller = ()=>{
+  props.follow(props.userId)
+}
+ 
   return (
     <div className={s.user}>
       <div className={s.userAvatar}>
         <img src={props.img} alt="Avatar" />
-        <button type="button" className={s.btn}>
-          Follow
-        </button>
+
+        {
+        props.followStatus ? 
+        <button onClick={unfollowCaller}  className={s.btnUnfollow} type="button">Unfollow</button>
+        : <button onClick={followCaller} className={s.btnFollow} type="button">Follow</button>
+        }
+         
+        
       </div>
 
       <div className={s.userInfo}>
@@ -22,6 +38,8 @@ const User = (props) => {
       </div>
     </div>
   );
+
+
 };
 
 export default User;

@@ -8,7 +8,7 @@ let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     navbar: navbarReducer,
-    findUsers: usersReducer 
+    userPage: usersReducer 
 })
 
 let store = legacy_createStore(reducers)

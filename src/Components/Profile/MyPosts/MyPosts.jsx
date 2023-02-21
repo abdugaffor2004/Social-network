@@ -7,7 +7,7 @@ import Post from './Post/Post'
 
 const MyPosts = (props) => {
 
-    let postsElements = props.postsData.map(item => <Post img={item.img} message={item.message} />)
+    let postsElements = props.postsData.map(item => <Post key={item.id} img={item.img} message={item.message} />)
     // profilePage который находится в Profile.jsx
 
     // Получение данных из textarea 1 способ

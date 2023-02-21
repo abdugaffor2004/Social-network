@@ -1,63 +1,66 @@
+const FOLLOW = "FOLLOW";
+const UNFOLLOW = "UNFOLLOW";
+const SET_USERS = "SET-USERS";
 
 const initialState = {
+  users: [
+    
+  ],
+};
 
-    users:[
-        {
-            id: 1,
-            name: "Dilshod",
-            img: "https://images.unsplash.com/photo-1601979031925-424e53b6caaa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHVwcHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-            status: 'La rahta fit dunia',
-            location: {
-                country: "Tajikistan",
-                city:" Dushanbe"
+const usersReducer = (state = initialState, action) => {
+    
+  switch (action.type) {
+    case FOLLOW:
+      {
+        return {
+          ...state,
+          //users: [...state.users] В этом случае так копировать не получится
+          users: state.users.map( u => {
+            if (u.id === action.userId) {
+              return { ...u, followed: true };
             }
-        },
-          {
-            id: 2,
-            name: "Muhammed",
-            img: "https://images.unsplash.com/photo-1591160690555-5debfba289f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cHVwcHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-            status: 'Inna lilahi inna ilaihi radzhiun',
-            location: {
-                country:" Russia",
-                city: "Balabanovo"
-            }
-        },
-          {
-            id: 3,
-            name: "Iskandar",
-            img: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHB1cHB5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-            status: 'Hasbi Allahu va nimal waqil',
-            location: {
-                country: "Russia",
-                city: "Perm"
-            }
-        },
-          {
-            id: 4,
-            name: "Zafar",
-            img: "https://images.unsplash.com/photo-1594149929911-78975a43d4f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHB1cHB5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-            status: 'Fi aman Allah',
-            location: {
-                country: "Tajikistan",
-                city: "Dushanbe"
-            }
-        },
-          {
-            id: 5,
-            name: "Shukur",
-            img: "https://images.unsplash.com/photo-1565708097881-bbf4ecf47cc1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fHB1cHB5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-            status: 'Inna maal usri usro',
-            location: {
-                country: "Tajikistan",
-                city: 'Uliyanovsk'
-            }
-        },
-    ]
+            return u;
+          }),
+        };
+      }
 
-}
+      
+    case UNFOLLOW: {
+      return {
+        ...state,
+        users: state.users.map( u => {
+          if (u.id === action.userId) {
+            return { ...u, followed: false };
+          }
 
-const usersReducer = (state=initialState, action) =>{
-    return state
-}
+          return u;
+        }),
+      };
+    }
 
-export default usersReducer
+    case SET_USERS:{
+        return{
+            ...state,
+            users: [...action.users]
+        }
+    }
+
+    default:
+      return state;
+  }
+};
+
+export default usersReducer;
+
+export let followAC = (userId) => {
+  return { type: FOLLOW, userId };
+};
+
+export let unfollowAC = (userId) => {
+  return { type: UNFOLLOW, userId };
+};
+
+export let setUsersAC = (users) => {
+    return { type: SET_USERS, users };
+  };
