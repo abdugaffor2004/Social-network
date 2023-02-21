@@ -8,6 +8,8 @@ import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import NavbarContainer from './Components/Navbar/NavbarContainer';
+import FindUsersContainer from './Components/FindUsers/FindUsersContainer';
+
 
 
 const App = (props) => {
@@ -29,6 +31,7 @@ const App = (props) => {
             <Route path='/news/*' element={<News />} />
             <Route path='/music/*' element={<Music />} />
             <Route path='/settings/*' element={<Settings />} />
+            <Route path='/users/*' element={<FindUsersContainer />} />
             {/* Звевдочка ставится чтобы Rout также отслеживал вложенные пути ввида /dialogs/3 */}
           </Routes>
 

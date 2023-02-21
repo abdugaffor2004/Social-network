@@ -16,7 +16,9 @@ const NavbarLinks = (props) => {
       <div className={s.navItem}> <NavLink className={({ isActive }) => isActive ? s.active : undefined} to="/news">News</NavLink> </div>
       <div className={s.navItem}> <NavLink className={({ isActive }) => isActive ? s.active : undefined} to="/music">Music</NavLink> </div>
       <div className={s.navItem}> <NavLink className={({ isActive }) => isActive ? s.active : undefined} to="/settings">Settings</NavLink> </div>
+      <div className={s.navItem}> <NavLink className={({ isActive }) => isActive ? s.active : undefined} to="/users">Find users</NavLink> </div>
       <div className={s.navItem}> <NavLink className={({ isActive }) => isActive ? s.active : undefined} to="/friends">Friends</NavLink> </div>
+
 
       <div className={s.friend}>
         {friendsRender}
