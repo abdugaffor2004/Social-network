@@ -112,5 +112,5 @@ let store = {
 А прокидываем мы ее через пропсы */
 
 
-window.state = store._state
+
 export default store
