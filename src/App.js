@@ -8,7 +8,7 @@ import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import NavbarContainer from './Components/Navbar/NavbarContainer';
-import FindUsersContainer from './Components/FindUsers/FindUsersContainer';
+import FindUsersContainer_1 from './Components/FindUsers/FindUsersContainer_1';
 
 
 
@@ -31,7 +31,7 @@ const App = (props) => {
             <Route path='/news/*' element={<News />} />
             <Route path='/music/*' element={<Music />} />
             <Route path='/settings/*' element={<Settings />} />
-            <Route path='/users/*' element={<FindUsersContainer />} />
+            <Route path='/users/*' element={<FindUsersContainer_1 />} />
             {/* Звевдочка ставится чтобы Rout также отслеживал вложенные пути ввида /dialogs/3 */}
           </Routes>
 
