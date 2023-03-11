@@ -13,3 +13,22 @@
     margin-left: 10px;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  
+  .pagination button {
+    font-size: 16px;
+    padding: 5px 12px;
+    color: #000;
+  }
+  
+
+.selectedPage{
+    font-weight: bold;
+    background: rgb(13, 180, 102);
+    border-radius: 5px;
+}

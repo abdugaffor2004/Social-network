@@ -4,17 +4,16 @@ import axios from "axios";
 
 const FindUsersF = (props) => {
 
- let getUsers = () => { 
     if (props.users.length === 0) {
     
       axios
       .get("https://social-network.samuraijs.com/api/1.0/users")
       .then((response) => {
         props.setUsers(response.data.items);
-        console.log(response.data.items)
+        
       });
     }
-} 
+    
   
   
 
@@ -38,7 +37,6 @@ const FindUsersF = (props) => {
     <div className={s.findUsers}>
       <h2>USERS</h2>
 
-    <button onClick={getUsers}>Push</button>
       <div className={s.container}>{UserList}</div>
     </div>
   );
