@@ -36,7 +36,7 @@ const FindUsers = (props) => {
 
         {
           pages.map( (page) =>{
-            return <button onClick={ () => props.setCurrentPageCaller(page)} className={ props.currentPage === page ? s.selectedPage : undefined}> {page} </button>
+            return <button onClick={ () => props.setCurrentPageCaller(page)} className={ props.currentPage === page ? s.selectedPage : null}> {page} </button>
           })//Перебираем массив pages и отрисовываем кнопки пагинации, выделяем активную копку
         } 
       </div>
