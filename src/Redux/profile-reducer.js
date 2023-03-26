@@ -1,5 +1,6 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEWPOST_TEXT = "UPDATE-NEWPOST-TEXT";
+const SET_USER_PROFILE = "SET-USER-PROFILE";
 
 let initialState = {
   postsData: [
@@ -27,14 +28,14 @@ let initialState = {
       message: "I am fun of React! ",
     },
   ],
-
   newPostText: "",
+  profile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_NEWPOST_TEXT: {
-      //debugger
+    
       return {
         ...state,
         newPostText: action.newText,
@@ -59,8 +60,15 @@ const profileReducer = (state = initialState, action) => {
       }
 
       stateCopy.newPostText = ""; // очищение textarea после публикации поста
-      //debugger;
+      
       return stateCopy;
+    }
+
+    case SET_USER_PROFILE:{
+      return{
+        ...state,
+        profile: action.profile
+      }
     }
 
     default:
@@ -76,3 +84,7 @@ export let addPostActionCreator = () => {
 export let updateNewPostActionCreator = (value) => {
   return { type: UPDATE_NEWPOST_TEXT, newText: value };
 };
+
+export let setUserProfileAC = (profile) =>{
+  return{ type: SET_USER_PROFILE, profile }
+}

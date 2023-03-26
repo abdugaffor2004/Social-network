@@ -6,7 +6,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 class FindUsersContainer_2 extends React.Component {
   componentDidMount() {
     this.props.setIsFetching(true); //Пока делается ассинхронный запрос показывается спиннер
-
+    
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
@@ -14,6 +14,7 @@ class FindUsersContainer_2 extends React.Component {
       .then((response) => {
         this.props.setUsers(response.data.items);
         this.props.setIsFetching(false); // После запроса спиннер убирается
+        
       });
   }
 
