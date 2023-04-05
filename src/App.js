@@ -2,7 +2,7 @@
 import './App.css';
 import Header from './Components/Header/Header';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
@@ -16,7 +16,7 @@ const App = (props) => {
 
   return (
   
-    <BrowserRouter>
+    
       <div className='appWrapper'>
 
         <Header />
@@ -26,7 +26,7 @@ const App = (props) => {
         <div className='appWrapper_content'>
 
           <Routes>
-            <Route path="/profile/*" element={<ProfileContainer />} />
+            <Route path='/profile/:userId?' element={<ProfileContainer />} />
             <Route path="/dialogs/*" element={<DialogsContainer />} />
             <Route path='/news/*' element={<News />} />
             <Route path='/music/*' element={<Music />} />
@@ -39,7 +39,7 @@ const App = (props) => {
 
 
       </div>
-    </BrowserRouter>
+    
   );
 }
 

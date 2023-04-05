@@ -22,7 +22,7 @@ import s from './ProfileInfo.module.css'
                 <div className={s.city}> City: Balabanovo </div>
                 <div className={s.education}> Education: IATE MEPHI </div>
                 <div> Instagram: {props.profile.contacts.instagram} </div>
-                <div> VK: <NavLink target={'_blank'} to= {props.profile.contacts.vk}> {props.profile.contacts.vk}</NavLink> </div>
+                <div> VK: <a target={'_blank'} to ={props.profile.contacts.vk}> {props.profile.contacts.vk}</a> </div>
 
 
             </div>
