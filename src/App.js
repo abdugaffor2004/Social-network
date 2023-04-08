@@ -9,6 +9,7 @@ import Settings from './Components/Settings/Settings';
 import NavbarContainer from './Components/Navbar/NavbarContainer';
 import FindUsersContainer_1 from './Components/FindUsers/FindUsersContainer_1';
 import ProfileContainer from './Components/Profile/ProfileContainer';
+import HeaderContainer from './Components/Header/HeaderContainer';
 
 
 
@@ -19,7 +20,7 @@ const App = (props) => {
     
       <div className='appWrapper'>
 
-        <Header />
+        <HeaderContainer />
 
         <NavbarContainer />
 

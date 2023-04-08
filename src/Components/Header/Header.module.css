@@ -4,15 +4,34 @@
     /* Это относится к display: grid; в App.css */
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .header img{
     max-width: 40px;
-    margin-left: 20px;
 }
 
 .container{
-    width: 1200px;
-    
+    width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.loginWrap{
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.2s ease-in;
+
+}
+
+.loginWrap a.active{
+    color: #000;
+}
+
+.loginWrap:hover{
+    color: #000;
+}
+
+
 
