@@ -15,6 +15,7 @@ const FindUsers = (props) => {
       // city={item.location.city}
       follow={props.follow}
       unfollow={props.unfollow}
+      setIsFetching={props.setIsFetching}
     />
   ));
 

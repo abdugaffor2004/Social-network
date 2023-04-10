@@ -9,7 +9,7 @@ class FindUsersContainer_2 extends React.Component {
     
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`, { withCredentials:true }
       )
       .then((response) => {
         this.props.setUsers(response.data.items);
@@ -23,7 +23,7 @@ class FindUsersContainer_2 extends React.Component {
 
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`, {withCredentials: true}
       )
       .then((response) => {
         this.props.setUsers(response.data.items);
@@ -45,6 +45,7 @@ class FindUsersContainer_2 extends React.Component {
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           setCurrentPageCaller={this.setCurrentPageCaller}
+          setIsFetching={this.props.setIsFetching}
         />
       </div>
     );
