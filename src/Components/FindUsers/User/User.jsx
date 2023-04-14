@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import s from "./User.module.css";
-import axios from "axios";
+import { followUser, unfollowUser } from "../../../api/api";
 
 const User = (props) => {
 
@@ -9,17 +9,9 @@ const User = (props) => {
 
     props.setIsFetching(true)
 
-    axios
-    .delete(
-      `https://social-network.samuraijs.com/api/1.0/follow/${props.userId}`,
-      { 
-        withCredentials: true,
-        headers: {"API-KEY": "fbaed546-b83e-41ea-bf18-c251dff1971b"}
-      }
-    )
-    .then((response) => {
+    unfollowUser(props.userId).then((response) => {
       
-      if(response.data.resultCode === 0){ props.unfollow(props.userId) } 
+      if(response.resultCode === 0){ props.unfollow(props.userId) } 
 
       props.setIsFetching(false)
       
@@ -31,16 +23,8 @@ const User = (props) => {
 
     props.setIsFetching(true)
 
-    axios
-    .post(
-      `https://social-network.samuraijs.com/api/1.0/follow/${props.userId}`, {}, 
-      { 
-        withCredentials:true,
-        headers: {"API-KEY": "fbaed546-b83e-41ea-bf18-c251dff1971b"}
-      }
-    )
-    .then( (response) => { 
-      if(response.data.resultCode === 0){ props.follow(props.userId) }
+    followUser(props.userId).then( (response) => { 
+      if(response.resultCode === 0){ props.follow(props.userId) }
       props.setIsFetching(false)
     });
 
