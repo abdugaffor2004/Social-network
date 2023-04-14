@@ -1,18 +1,14 @@
 import React from "react";
-import axios from "axios";
 import FindUsers from "./FindUsers";
 import Preloader from "../../Common/Preloader/Preloader";
+import { getUsers } from "../../api/api";
 
 class FindUsersContainer_2 extends React.Component {
   componentDidMount() {
     this.props.setIsFetching(true); //Пока делается ассинхронный запрос показывается спиннер
-    
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`, { withCredentials:true }
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
+
+      getUsers(this.props.pageSize, this.props.currentPage).then((response) => {
+        this.props.setUsers(response.items);
         this.props.setIsFetching(false); // После запроса спиннер убирается
         
       });
@@ -20,13 +16,9 @@ class FindUsersContainer_2 extends React.Component {
 
   setCurrentPageCaller = (currentPage) => {
     this.props.setIsFetching(true); //Пока делается ассинхронный запрос показывается спиннер
-
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`, {withCredentials: true}
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
+    
+      getUsers(this.props.pageSize, currentPage).then((response) => {
+        this.props.setUsers(response.items);
         this.props.setIsFetching(false); // После запроса спиннер убирается
       });
 
@@ -58,7 +50,7 @@ export default FindUsersContainer_2;
 //При перезагрузке страницы(/users) пользователи не появляются.
 //А при переходе по navlink-ам они появляютсяб но опять исчезают после перезагрузки.
 
-{
+
   /* Эта проблема(вышеуказанная) решена!!!(после долгих размышлений).
  А надо было всего лишь процесс маппинга массива написать в методе render().  */
-}
+

@@ -24,9 +24,7 @@ const User = (props) => {
       props.setIsFetching(false)
       
     });
-
-    
-    
+ 
   }
 
   const followCaller = ()=>{
