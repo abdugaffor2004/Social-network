@@ -1,13 +1,13 @@
 import React from "react";
 import FindUsers from "./FindUsers";
 import Preloader from "../../Common/Preloader/Preloader";
-import { getUsers } from "../../api/api";
+import { userApi } from "../../api/api";
 
 class FindUsersContainer_2 extends React.Component {
   componentDidMount() {
     this.props.setIsFetching(true); //Пока делается ассинхронный запрос показывается спиннер
 
-      getUsers(this.props.pageSize, this.props.currentPage).then((response) => {
+      userApi.getUsers(this.props.pageSize, this.props.currentPage).then((response) => {
         this.props.setUsers(response.items);
         this.props.setIsFetching(false); // После запроса спиннер убирается
         
@@ -17,7 +17,7 @@ class FindUsersContainer_2 extends React.Component {
   setCurrentPageCaller = (currentPage) => {
     this.props.setIsFetching(true); //Пока делается ассинхронный запрос показывается спиннер
     
-      getUsers(this.props.pageSize, currentPage).then((response) => {
+      userApi.getUsers(this.props.pageSize, currentPage).then((response) => {
         this.props.setUsers(response.items);
         this.props.setIsFetching(false); // После запроса спиннер убирается
       });

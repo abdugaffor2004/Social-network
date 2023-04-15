@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import s from "./User.module.css";
-import { followUser, unfollowUser } from "../../../api/api";
+import { userApi } from "../../../api/api";
 
 const User = (props) => {
 
@@ -9,7 +9,7 @@ const User = (props) => {
 
     props.setIsFetching(true)
 
-    unfollowUser(props.userId).then((response) => {
+    userApi.unfollowUser(props.userId).then((response) => {
       
       if(response.resultCode === 0){ props.unfollow(props.userId) } 
 
@@ -23,7 +23,7 @@ const User = (props) => {
 
     props.setIsFetching(true)
 
-    followUser(props.userId).then( (response) => { 
+    userApi.followUser(props.userId).then( (response) => { 
       if(response.resultCode === 0){ props.follow(props.userId) }
       props.setIsFetching(false)
     });

@@ -6,20 +6,42 @@ export const instance = axios.create({
   withCredentials: true,
 });
 
+export let userApi = {
+
+  getUsers: (pageSize = 7, currentPage = 1) => {
+    return instance.get(`users?count=${pageSize}&page=${currentPage}`)
+      .then((response) => response.data);
+  },
+
+  followUser: (userId) => {
+    return instance.post(`follow/${userId}`)
+      .then((response) => response.data);
+  },
+
+  unfollowUser: (userId) => {
+    return instance.delete(`follow/${userId}`)
+      .then((response) => response.data);
+  }
+  
+
+}
+
+export let authApi = {
+
+  authMe : () =>{
+    return instance.get('auth/me').then( (response) => {return response.data} )
+  }
+
+}
+
+export let profileApi = {
+    getProfile: (userId) => {
+      return instance.get('profile/'+userId).then( (response) => response.data )
+    }
+}
 
 
 
-export let getUsers = (pageSize = 7, currentPage = 1) => {
-  return instance.get(`users?count=${pageSize}&page=${currentPage}`)
-    .then((response) => response.data);
-};
 
-export let followUser = (userId) => {
-  return instance.post(`follow/${userId}`)
-    .then((response) => response.data);
-};
 
-export let unfollowUser = (userId) => {
-  return instance.delete(`follow/${userId}`)
-    .then((response) => response.data);
-};
+
