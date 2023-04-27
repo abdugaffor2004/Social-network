@@ -1,9 +1,11 @@
 import { connect } from "react-redux";
 import {
   followAC,
+  getUsersThunkCreator,
   setCurrentPageAC,
   setIsFetchingAC,
   setUsersAC,
+  toggleFollowingProgressAC,
   unfollowAC,
 } from "../../Redux/users-reducer";
 
@@ -16,6 +18,7 @@ let mapStateToProps = (state) => {
     totalPageCount: state.userPage.totalPageCount,
     currentPage: state.userPage.currentPage,
     isFetching: state.userPage.isFetching,
+    followingInProgress: state.userPage.followingInProgress
   };
 };
 
@@ -26,6 +29,9 @@ let mapDispatchToProps = (dispatch) => {
     setUsers: (users) => dispatch(setUsersAC(users)),
     setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
     setIsFetching: (isFetchingStatus) => dispatch(setIsFetchingAC(isFetchingStatus)),
+    toggleFollowingProgress: (isFetchingStatus) => dispatch( toggleFollowingProgressAC(isFetchingStatus) ),
+
+    getUsersThunk: (pageSize, currentPage) => dispatch( getUsersThunkCreator(pageSize, currentPage) )
   };
 };
 

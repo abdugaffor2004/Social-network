@@ -16,6 +16,8 @@ const FindUsers = (props) => {
       follow={props.follow}
       unfollow={props.unfollow}
       setIsFetching={props.setIsFetching}
+      followingInProgress={props.followingInProgress}
+      toggleFollowingProgress = {props.toggleFollowingProgress}
     />
   ));
 
@@ -27,7 +29,7 @@ const FindUsers = (props) => {
     pages.push(i)
  }
 
-
+debugger
   return (
     <div className={s.findUsers}>
 

@@ -25,6 +25,7 @@ const User = (props) => {
 
     userApi.followUser(props.userId).then( (response) => { 
       if(response.resultCode === 0){ props.follow(props.userId) }
+      
       props.setIsFetching(false)
     });
 
@@ -40,8 +41,9 @@ const User = (props) => {
         </NavLink>
         {
         props.followStatus ? 
-        <button onClick={unfollowCaller}  className={s.btnUnfollow} type="button">Unfollow</button>
-        : <button onClick={followCaller} className={s.btnFollow} type="button">Follow</button>
+        <button disabled={props.followingInProgress} onClick={unfollowCaller}  className={s.btnUnfollow} type="button">Unfollow</button>
+        : <button disabled={props.followingInProgress} onClick={followCaller} className={s.btnFollow} type="button">Follow</button>
+        // Если 
         }
          
         

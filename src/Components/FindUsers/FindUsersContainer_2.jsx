@@ -5,13 +5,7 @@ import { userApi } from "../../api/api";
 
 class FindUsersContainer_2 extends React.Component {
   componentDidMount() {
-    this.props.setIsFetching(true); //Пока делается ассинхронный запрос показывается спиннер
-
-      userApi.getUsers(this.props.pageSize, this.props.currentPage).then((response) => {
-        this.props.setUsers(response.items);
-        this.props.setIsFetching(false); // После запроса спиннер убирается
-        
-      });
+    this.props.getUsersThunk(this.props.pageSize, this.props.currentPage)
   }
 
   setCurrentPageCaller = (currentPage) => {
@@ -38,6 +32,8 @@ class FindUsersContainer_2 extends React.Component {
           currentPage={this.props.currentPage}
           setCurrentPageCaller={this.setCurrentPageCaller}
           setIsFetching={this.props.setIsFetching}
+          followingInProgress={this.props.followingInProgress}
+          toggleFollowingProgress = {this.props.toggleFollowingProgress}
         />
       </div>
     );

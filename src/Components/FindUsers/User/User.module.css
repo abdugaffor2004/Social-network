@@ -27,6 +27,11 @@
     color:  rgb(13, 180, 102);
 }
 
+
+.btnFollow:disabled, .btnUnfollow:disabled{
+    opacity: 40%;
+}
+
 .btnUnfollow{
     /* background-color: rgb(13, 180, 102);; */
     padding: 3px 8px;
