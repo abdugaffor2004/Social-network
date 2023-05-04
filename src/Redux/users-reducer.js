@@ -120,3 +120,19 @@ export let getUsersThunkCreator = (pageSize, currentPage) => {
   };
 
 }; // Замыкание   
+
+
+export let setCurrentPageThunkCreator = (pageSize, currentPage) =>{
+
+  return (dispatch) =>{
+    dispatch( setIsFetchingAC(true) ); //Пока делается ассинхронный запрос показывается спиннер
+    
+      userApi.getUsers(pageSize, currentPage).then((response) => {
+        dispatch( setUsersAC(response.items) );
+        dispatch( setIsFetchingAC(false) ); // После запроса спиннер убирается
+      });
+
+      dispatch( setCurrentPageAC(currentPage) )
+  }
+
+}

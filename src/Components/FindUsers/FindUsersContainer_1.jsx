@@ -3,6 +3,7 @@ import {
   followAC,
   getUsersThunkCreator,
   setCurrentPageAC,
+  setCurrentPageThunkCreator,
   setIsFetchingAC,
   setUsersAC,
   toggleFollowingProgressAC,
@@ -27,11 +28,12 @@ let mapDispatchToProps = (dispatch) => {
     follow: (userId) => dispatch(followAC(userId)),
     unfollow: (userId) => dispatch(unfollowAC(userId)),
     setUsers: (users) => dispatch(setUsersAC(users)),
-    setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
+    //setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
     setIsFetching: (isFetchingStatus) => dispatch(setIsFetchingAC(isFetchingStatus)),
     toggleFollowingProgress: (isFetchingStatus) => dispatch( toggleFollowingProgressAC(isFetchingStatus) ),
 
-    getUsersThunk: (pageSize, currentPage) => dispatch( getUsersThunkCreator(pageSize, currentPage) )
+    getUsersThunk: (pageSize, currentPage) => dispatch( getUsersThunkCreator(pageSize, currentPage) ),
+    setCurrentPageThunk: ( pageSize, currentPage ) => dispatch( setCurrentPageThunkCreator(pageSize, currentPage) )
   };
 };
 
