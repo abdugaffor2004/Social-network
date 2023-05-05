@@ -1,5 +1,7 @@
+import { authApi } from "../api/api";
+
 const SET_AUTH_USER_DATA = "SET-AUTH-USER-DATA ";
-const SET_MY_PROFILE_DATA = "SET-MY-PROFILE-DATA ";
+
 
 
 let initialState = {
@@ -7,8 +9,6 @@ let initialState = {
     eMail: null,
     login: null,
     isAuth: false,
-
-    myProfile: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -22,13 +22,6 @@ const authReducer = (state = initialState, action) => {
       };
     }
 
-    case SET_MY_PROFILE_DATA: {
-        return{
-            ...state,
-            myProfile: action.myProfile
-        }
-    }
-
     default:
       return state;
   }
@@ -40,6 +33,16 @@ export let setAuthUserDataAC = (id, eMail, login) => {
   return { type: SET_AUTH_USER_DATA, data:{id, eMail, login} };
 };
 
-export let setMyprofileDataAC = (myProfile) => {
-    return { type: SET_MY_PROFILE_DATA, myProfile};
-};
+
+
+export let authThunkCreator = () =>{
+  return (dispatch) =>{
+    authApi.authMe().then((response) => {
+      if(response.resultCode === 0){
+          let {id, email, login} = response.data
+          dispatch( setAuthUserDataAC( id, email, login ) )  // Эти параметры должны быть такими же как в API
+      }
+
+  })
+  }
+}

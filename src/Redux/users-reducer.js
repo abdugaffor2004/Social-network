@@ -119,7 +119,7 @@ export let getUsersThunkCreator = (pageSize, currentPage) => {
       });
   };
 
-}; // Замыкание   
+}; // Замыкание(closure)   
 
 
 export let setCurrentPageThunkCreator = (pageSize, currentPage) =>{

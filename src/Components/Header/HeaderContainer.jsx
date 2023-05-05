@@ -2,21 +2,12 @@
 import React from "react"
 import Header from "./Header"
 import { connect } from "react-redux"
-import { setAuthUserDataAC} from "../../Redux/auth-reducer"
-import { authApi } from "../../api/api"
+import { authThunkCreator, setAuthUserDataAC} from "../../Redux/auth-reducer"
 
 
 class HeaderContainer extends React.Component{
 
     componentDidMount(){
-    authApi.authMe().then((response) => {
-            // debugger
-            if(response.resultCode === 0){
-                let {id, email, login} = response.data
-                this.props.setAuthUserData( id, email, login ) // Эти параметры должны быть такими же как в API
-            }
-
-        })
 
         // axios.get( 'https://social-network.samuraijs.com/api/1.0/profile/' + this.props.id )
         //         .then((response) => {
@@ -24,7 +15,15 @@ class HeaderContainer extends React.Component{
         //         this.props.setMyprofileData(response.data)
         //     })
 
-    
+        // authApi.authMe().then((response) => {
+        //         // debugger
+        //         if(response.resultCode === 0){
+        //             let {id, email, login} = response.data
+        //             this.props.setAuthUserData( id, email, login ) // Эти параметры должны быть такими же как в API
+        //         }
+        //     })
+
+        this.props.authThunk()
     }
 
     
@@ -51,7 +50,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
    return{
     setAuthUserData: (userId, eMail, login) =>  dispatch( setAuthUserDataAC(userId, eMail, login) ),
-    //setMyprofileData: (myProfile) => dispatch( setMyprofileDataAC(myProfile) )
+
+    authThunk: () => dispatch( authThunkCreator() )
    }
 }
 
