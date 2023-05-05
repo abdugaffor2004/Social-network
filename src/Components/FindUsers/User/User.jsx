@@ -1,34 +1,36 @@
 import { NavLink } from "react-router-dom";
 import s from "./User.module.css";
-import { userApi } from "../../../api/api";
 
 const User = (props) => {
 
 
   const unfollowCaller = ()=>{
 
-    props.setIsFetching(true)
+    // props.setIsFetching(true)
 
-    userApi.unfollowUser(props.userId).then((response) => {
+    // userApi.unfollowUser(props.userId).then((response) => {
       
-      if(response.resultCode === 0){ props.unfollow(props.userId) } 
+    //   if(response.resultCode === 0){ props.unfollow(props.userId) } 
 
-      props.setIsFetching(false)
+    //   props.setIsFetching(false)
       
-    });
+    // }); // Вариант без санки
+
+    props.unfollowThunk(props.userId) // Вариант с санкой
  
   }
 
   const followCaller = ()=>{
 
-    props.setIsFetching(true)
+    // props.setIsFetching(true)
 
-    userApi.followUser(props.userId).then( (response) => { 
-      if(response.resultCode === 0){ props.follow(props.userId) }
+    // userApi.followUser(props.userId).then( (response) => { 
+    //   if(response.resultCode === 0){ props.follow(props.userId) }
       
-      props.setIsFetching(false)
-    });
+    //   props.setIsFetching(false)
+    // });
 
+    props.followThunk(props.userId)
     
   }
  
@@ -43,7 +45,6 @@ const User = (props) => {
         props.followStatus ? 
         <button disabled={props.followingInProgress} onClick={unfollowCaller}  className={s.btnUnfollow} type="button">Unfollow</button>
         : <button disabled={props.followingInProgress} onClick={followCaller} className={s.btnFollow} type="button">Follow</button>
-        // Если 
         }
          
         

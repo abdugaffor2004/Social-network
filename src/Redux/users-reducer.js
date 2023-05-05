@@ -136,3 +136,37 @@ export let setCurrentPageThunkCreator = (pageSize, currentPage) =>{
   }
 
 }
+
+export let unfollowThunkCreator = (userId) =>{
+
+  return (dispatch) =>{
+
+    dispatch( setIsFetchingAC(true) ) 
+
+    userApi.unfollowUser(userId).then((response) => {
+      
+      if(response.resultCode === 0) dispatch( unfollowAC(userId) )   
+
+      dispatch( setIsFetchingAC(false) ) 
+      
+    });
+
+  }
+
+}
+
+export let followThunkCreator = (userId) =>{
+
+  return (dispatch) =>{
+
+    dispatch( setIsFetchingAC(true) ); 
+
+    userApi.followUser(userId).then( (response) => { 
+      if(response.resultCode === 0){ dispatch( followAC(userId) )  }
+      
+      dispatch( setIsFetchingAC(false) ) 
+    });
+
+  }
+
+}

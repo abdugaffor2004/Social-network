@@ -1,13 +1,9 @@
 import { connect } from "react-redux";
 import {
-  followAC,
+  followThunkCreator,
   getUsersThunkCreator,
-  setCurrentPageAC,
   setCurrentPageThunkCreator,
-  setIsFetchingAC,
-  setUsersAC,
-  toggleFollowingProgressAC,
-  unfollowAC,
+  unfollowThunkCreator,
 } from "../../Redux/users-reducer";
 
 import FindUsersContainer_2 from "./FindUsersContainer_2";
@@ -25,15 +21,18 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    follow: (userId) => dispatch(followAC(userId)),
-    unfollow: (userId) => dispatch(unfollowAC(userId)),
-    setUsers: (users) => dispatch(setUsersAC(users)),
+    // follow: (userId) => dispatch(followAC(userId)),
+    // unfollow: (userId) => dispatch(unfollowAC(userId)),
+    // setUsers: (users) => dispatch(setUsersAC(users)),
     //setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
-    setIsFetching: (isFetchingStatus) => dispatch(setIsFetchingAC(isFetchingStatus)),
-    toggleFollowingProgress: (isFetchingStatus) => dispatch( toggleFollowingProgressAC(isFetchingStatus) ),
+    //setIsFetching: (isFetchingStatus) => dispatch(setIsFetchingAC(isFetchingStatus)),
+    // Нам эти функции больше не нужны так как мы перенесли всю логику их выполнения в Санки. 
+    //Так как Санки находятся в редюсере, то мы вызываем эти функции(то есть вызов action creator -ов) точнее сказать сами actionCreator-ы напрямую из редюссера.
 
     getUsersThunk: (pageSize, currentPage) => dispatch( getUsersThunkCreator(pageSize, currentPage) ),
-    setCurrentPageThunk: ( pageSize, currentPage ) => dispatch( setCurrentPageThunkCreator(pageSize, currentPage) )
+    setCurrentPageThunk: ( pageSize, currentPage ) => dispatch( setCurrentPageThunkCreator(pageSize, currentPage) ),
+    unfollowThunk: (userId) => dispatch( unfollowThunkCreator(userId)),
+    followThunk: (userId) => dispatch( followThunkCreator(userId) )
   };
 };
 
