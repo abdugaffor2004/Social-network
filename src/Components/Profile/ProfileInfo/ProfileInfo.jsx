@@ -1,5 +1,4 @@
 
-import { NavLink } from 'react-router-dom'
 import Preloader from '../../../Common/Preloader/Preloader'
 import s from './ProfileInfo.module.css'
  
@@ -22,7 +21,7 @@ import s from './ProfileInfo.module.css'
                 <div className={s.city}> City: Balabanovo </div>
                 <div className={s.education}> Education: IATE MEPHI </div>
                 <div> Instagram: {props.profile.contacts.instagram} </div>
-                <div> VK: <a target={'_blank'} to ={props.profile.contacts.vk}> {props.profile.contacts.vk}</a> </div>
+                <div> VK: {props.profile.contacts.vk} </div>
 
 
             </div>
