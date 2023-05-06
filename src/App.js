@@ -9,6 +9,7 @@ import NavbarContainer from './Components/Navbar/NavbarContainer';
 import FindUsersContainer1 from './Components/FindUsers/FindUsersContainer_1';
 import ProfileContainer from './Components/Profile/ProfileContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
+import LoginPage from './Components/Login/Login';
 
 
 
@@ -23,8 +24,6 @@ const App = (props) => {
 
         <NavbarContainer />
 
-        <div className='appWrapper_content'>
-
           <Routes>
             <Route path='/profile/:userId?' element={<ProfileContainer />} />
             <Route path="/dialogs/*" element={<DialogsContainer />} />
@@ -32,10 +31,9 @@ const App = (props) => {
             <Route path='/music/*' element={<Music />} />
             <Route path='/settings/*' element={<Settings />} />
             <Route path='/users/*' element={<FindUsersContainer1 />} />
+            <Route path='/login' element={<LoginPage />} />
             {/* Звевдочка ставится чтобы Rout также отслеживал вложенные пути ввида /dialogs/3 */}
           </Routes>
-
-        </div>
 
 
       </div>
