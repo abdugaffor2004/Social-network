@@ -1,6 +1,7 @@
 import React from "react";
 import FindUsers from "./FindUsers";
 import Preloader from "../../Common/Preloader/Preloader";
+import { Navigate } from "react-router-dom";
 
 
 class FindUsersContainer_2 extends React.Component {
@@ -22,6 +23,9 @@ class FindUsersContainer_2 extends React.Component {
   };
 
   render() {
+
+    if(!this.props.isAuth) return <Navigate to={'/login'} />
+
     return (
       <div style={{ position: "relative" }}>
         {this.props.isFetching === true ? <Preloader /> : null}
