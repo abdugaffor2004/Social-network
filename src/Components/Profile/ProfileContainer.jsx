@@ -6,6 +6,7 @@ import Profile from "./Profile";
 import { profileApi } from "../../api/api";
 import withRouter from "../../HOC/withRouter";
 import { withAuthRedirect } from "../../HOC/withAuthRedirect";
+import { compose } from "redux";
 
 
 class ProfileContainer extends React.Component{
@@ -40,10 +41,19 @@ const mapDispatchToProps = (dispatch) =>{
     }
 }
 
+// After:
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withRouter,
+    withAuthRedirect
+)
+(ProfileContainer) // конвеер обработчиков(withAuthRedirect, withRouter, connect). идет снизу вверх
 
-let withAuthRedirectComponent = withAuthRedirect( ProfileContainer )// HOC проверки на redirect
 
-let withRouterComponent = withRouter(withAuthRedirectComponent) 
 
-export default connect(mapStateToProps, mapDispatchToProps)( withRouterComponent )
+//Before: // let withAuthRedirectComponent = withAuthRedirect( ProfileContainer )// HOC проверки на redirect
+
+// let withRouterComponent = withRouter(withAuthRedirectComponent) 
+
+// export default connect(mapStateToProps, mapDispatchToProps)( withRouterComponent )
 
