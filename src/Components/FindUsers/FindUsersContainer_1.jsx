@@ -7,6 +7,7 @@ import {
 } from "../../Redux/users-reducer";
 
 import FindUsersContainer_2 from "./FindUsersContainer_2";
+import { withAuthRedirect } from "../../HOC/withAuthRedirect";
 
 let mapStateToProps = (state) => {
   return {
@@ -37,9 +38,11 @@ let mapDispatchToProps = (dispatch) => {
   };
 };
 
+let withRedirectComponent = withAuthRedirect(FindUsersContainer_2)
+
 const FindUsersContainer_1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(FindUsersContainer_2);
+)(withRedirectComponent);
 
 export default FindUsersContainer_1;
