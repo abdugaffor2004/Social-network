@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+      "module": "ES6",
+      "jsx": "preserve",
+      "checkJs": true
+    },
+    "exclude": ["node_modules", "**/node_modules/*"]
+  }// Для того чтобы работал auto-import (можно использовать и доп. расширение, которое мы до этого и использовали)
