@@ -1,35 +1,64 @@
 
+import React from 'react'
 import Preloader from '../../../Common/Preloader/Preloader'
 import s from './ProfileInfo.module.css'
  
- const ProfileInfo = (props) =>{
-    if(!props.profile){
-        return <Preloader />
-    } //без этого ничего не будет работать. Если profile===null => <Preloader />
+ class ProfileInfo extends React.Component{
 
-    return(
+    state = {
+        editMode: false,
+        status: '// Улыбаемся и пашем'
+    }
+
+    editModeOn = () =>{
+        this.setState({editMode: true})
+    }
+
+    editModeOff = () =>{
+        this.setState({editMode: false})
+    }
+
+    statusEditor = (event) =>{
+        let value =event.target.value
+        this.setState({status: value})
+    }
+
+    render(){
+        if(!this.props.profile){
+            return <Preloader />
+        } //без этого ничего не будет работать. Если profile===null => <Preloader />
+
+        return(
             
-        
-        <div className= {s.profileInfo}>
+            <div className= {s.profileInfo}>
+    
+                <img src={this.props.profile.photos.large} alt="profileImg"  />
+    
+                <div className={s.profileInfo_content}>
+    
+                    <h2 className={s.name}> {this.props.profile.fullName} </h2>
 
-            <img src={props.profile.photos.large} alt="profileImg"  />
-
-            <div className={s.profileInfo_content}>
-
-                <h2 className={s.name}> {props.profile.fullName} </h2>
-                <div className={s.birth}>Date of Birth: 2 January </div>
-                <div className={s.city}> City: Balabanovo </div>
-                <div className={s.education}> Education: IATE MEPHI </div>
-                <div> Instagram: {props.profile.contacts.instagram} </div>
-                <div> VK: {props.profile.contacts.vk} </div>
-
-
+                    {!this.state.editMode && <h3 className={s.status} onDoubleClick={this.editModeOn}> {this.state.status} </h3>}
+                    {this.state.editMode && <input value={this.state.status} onChange={this.statusEditor} autoFocus={true} className={s.status} onBlur={this.editModeOff}/>}
+                    
+    
+                    <div className={s.birth}>Date of Birth: 2 January </div>
+                    <div className={s.city}> City: Balabanovo </div>
+                    <div className={s.education}> Education: IATE MEPHI </div>
+                    <div> Instagram: {this.props.profile.contacts.instagram} </div>
+                    <div> VK: {this.props.profile.contacts.vk} </div>
+    
+    
+                </div>
+    
             </div>
+    
+    
+        )
 
-        </div>
+    }
 
-
-    )
+    
 
  }
 
