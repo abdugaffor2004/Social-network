@@ -7,7 +7,6 @@ import s from './ProfileInfo.module.css'
 
     state = {
         editMode: false,
-        status: '// Улыбаемся и пашем'
     }
 
     editModeOn = () =>{
@@ -18,10 +17,6 @@ import s from './ProfileInfo.module.css'
         this.setState({editMode: false})
     }
 
-    statusEditor = (event) =>{
-        let value =event.target.value
-        this.setState({status: value})
-    }
 
     render(){
         if(!this.props.profile){
@@ -38,8 +33,8 @@ import s from './ProfileInfo.module.css'
     
                     <h2 className={s.name}> {this.props.profile.fullName} </h2>
 
-                    {!this.state.editMode && <h3 className={s.status} onDoubleClick={this.editModeOn}> {this.state.status} </h3>}
-                    {this.state.editMode && <input value={this.state.status} onChange={this.statusEditor} autoFocus={true} className={s.status} onBlur={this.editModeOff}/>}
+                    {!this.state.editMode && <h3 className={s.status} onDoubleClick={this.editModeOn}> {this.props.profileStatus} </h3>}
+                    {this.state.editMode && <input value={this.props.profileStatus} autoFocus={true} className={s.status} onBlur={this.editModeOff}/>}
                     
     
                     <div className={s.birth}>Date of Birth: 2 January </div>

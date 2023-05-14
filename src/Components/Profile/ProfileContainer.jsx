@@ -1,7 +1,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import { setUserProfileAC } from "../../Redux/profile-reducer";
+import { setProfileStatusThunkCreator, setUserProfileAC } from "../../Redux/profile-reducer";
 import Profile from "./Profile";
 import { profileApi } from "../../api/api";
 import withRouter from "../../HOC/withRouter";
@@ -11,14 +11,19 @@ import { compose } from "redux";
 
 class ProfileContainer extends React.Component{
     componentDidMount(){
-    let userId = this.props.router.params.userId
+        let userId = this.props.router.params.userId
 
+        
+        if(!userId){userId = 10}
+        profileApi.getProfile(userId).then((response) => {
+            this.props.setUserProfile(response);
+        })
+
+        this.props.setProfileStatusThunk(userId) // получаем из API статус и записываем его в state(используем thunk) 
+
+    }
     
-    if(!userId){userId = 10}
-    profileApi.getProfile(userId).then((response) => {
-        this.props.setUserProfile(response);
-      })
-    } 
+    
 
     render(){
         return(
@@ -31,13 +36,15 @@ class ProfileContainer extends React.Component{
 let mapStateToProps = (state) => {
     return{
         profile: state.profilePage.profile,
+        profileStatus: state.profilePage.profileStatus
         
     }
 }
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        setUserProfile: (profile) => dispatch( setUserProfileAC(profile) )
+        setUserProfile: (profile) => dispatch( setUserProfileAC(profile) ),
+        setProfileStatusThunk: (userId) => dispatch( setProfileStatusThunkCreator(userId) )
     }
 }
 

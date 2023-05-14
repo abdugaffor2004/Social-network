@@ -16,7 +16,7 @@ const Profile = (props) => {
             </div>
 
             <div className={s.container}>
-                <ProfileInfo profile={props.profile} />
+                <ProfileInfo {...props} profile={props.profile} />
             </div>
 
             <div className={s.container}>
