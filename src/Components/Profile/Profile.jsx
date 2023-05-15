@@ -16,7 +16,7 @@ const Profile = (props) => {
             </div>
 
             <div className={s.container}>
-                <ProfileInfo {...props} profile={props.profile} />
+                <ProfileInfo {...props} profile={props.profile} updateProfileStatusThunk={props.updateProfileStatusThunk}/>
             </div>
 
             <div className={s.container}>

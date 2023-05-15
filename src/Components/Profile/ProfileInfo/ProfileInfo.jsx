@@ -5,8 +5,10 @@ import s from './ProfileInfo.module.css'
  
  class ProfileInfo extends React.Component{
 
+
     state = {
         editMode: false,
+        localStatus: this.props.profileStatus
     }
 
     editModeOn = () =>{
@@ -15,6 +17,13 @@ import s from './ProfileInfo.module.css'
 
     editModeOff = () =>{
         this.setState({editMode: false})
+
+        this.props.updateProfileStatusThunk(this.state.localStatus)
+    }
+
+    onStatusEdit = (event) =>{
+        let value = event.target.value
+        this.setState({localStatus: value})
     }
 
 
@@ -33,8 +42,8 @@ import s from './ProfileInfo.module.css'
     
                     <h2 className={s.name}> {this.props.profile.fullName} </h2>
 
-                    {!this.state.editMode && <h3 className={s.status} onDoubleClick={this.editModeOn}> {this.props.profileStatus} </h3>}
-                    {this.state.editMode && <input value={this.props.profileStatus} autoFocus={true} className={s.status} onBlur={this.editModeOff}/>}
+                    {!this.state.editMode && <h3 className={s.status} onDoubleClick={this.editModeOn}> {this.props.profileStatus || "No status"} </h3>}
+                    {this.state.editMode && <input onChange={this.onStatusEdit} value={this.state.localStatus} autoFocus={true} className={s.status} onBlur={this.editModeOff}/>}
                     
     
                     <div className={s.birth}>Date of Birth: 2 January </div>

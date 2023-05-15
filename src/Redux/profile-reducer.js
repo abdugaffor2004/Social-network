@@ -33,7 +33,7 @@ let initialState = {
   ],
   newPostText: "",
   profile: null,
-  profileStatus: null
+  profileStatus: ""
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -105,8 +105,25 @@ export let setProfileStatusAC = (profileStatus) =>{
 }
 
 
+
+
+
 export let setProfileStatusThunkCreator = (userId) =>{
   return (dispatch)=>{
     profileApi.getStatus(userId).then( (response) => dispatch( setProfileStatusAC(response) ))
   }
 }
+
+export let updateProfileStatusThunkCreator = (profileStatus) => {
+  return (dispatch) =>{
+    profileApi.updateStatus(profileStatus).then( response =>{
+
+      if(response.resultCode===0){
+        dispatch( setProfileStatusAC(profileStatus) )
+        console.log(profileStatus)
+      }
+
+    } )
+  }
+}
+
