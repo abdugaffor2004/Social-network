@@ -107,8 +107,18 @@ export let setProfileStatusAC = (profileStatus) =>{
 
 
 
+export let getProfileThunkCreator = (userId = 28690) => {
 
-export let setProfileStatusThunkCreator = (userId) =>{
+  return(dispatch) =>{
+   
+      profileApi.getProfile(userId).then((response) => {
+          dispatch( setUserProfileAC(response) ) 
+      })
+  }
+
+}
+
+export let setProfileStatusThunkCreator = (userId = 28690) =>{
   return (dispatch)=>{
     profileApi.getStatus(userId).then( (response) => dispatch( setProfileStatusAC(response) ))
   }
@@ -120,7 +130,7 @@ export let updateProfileStatusThunkCreator = (profileStatus) => {
 
       if(response.resultCode===0){
         dispatch( setProfileStatusAC(profileStatus) )
-        console.log(profileStatus)
+        
       }
 
     } )

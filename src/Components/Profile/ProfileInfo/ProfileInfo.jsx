@@ -26,8 +26,17 @@ import s from './ProfileInfo.module.css'
         this.setState({localStatus: value})
     }
 
+    componentDidUpdate =(prevProps) =>{
+        if(prevProps.profileStatus !== this.props.profileStatus){
+            this.setState({localStatus: this.props.profileStatus})
+        }
+        
+    }
 
+
+    
     render(){
+        
         if(!this.props.profile){
             return <Preloader />
         } //без этого ничего не будет работать. Если profile===null => <Preloader />
