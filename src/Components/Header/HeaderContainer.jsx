@@ -9,7 +9,7 @@ class HeaderContainer extends React.Component{
 
     componentDidMount(){
 
-        // axios.get( 'https://social-network.samuraijs.com/api/1.0/profile/' + this.props.id )
+        //1 axios.get( 'https://social-network.samuraijs.com/api/1.0/profile/' + this.props.id )
         //         .then((response) => {
         //         debugger
         //         this.props.setMyprofileData(response.data)
@@ -23,7 +23,10 @@ class HeaderContainer extends React.Component{
         //         }
         //     })
 
+
         this.props.authThunk()
+
+        
     }
 
     

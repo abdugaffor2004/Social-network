@@ -1,7 +1,6 @@
 import { profileApi } from "../api/api";
 
 const ADD_POST = "ADD-POST";
-const UPDATE_NEWPOST_TEXT = "UPDATE-NEWPOST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_PROFILE_STATUS = "SET-PROFILE-STATUS";
 
@@ -31,27 +30,20 @@ let initialState = {
       message: "I am fun of React! ",
     },
   ],
-  newPostText: "",
   profile: null,
   profileStatus: ""
 };
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NEWPOST_TEXT: {
     
-      return {
-        ...state,
-        newPostText: action.newText,
-      };
-    }
 
     case ADD_POST: {
       //debugger
       let newPost = {
-        id: 5,
+        id: Math.floor(Math.random() * 100),
         img: "https://images.unsplash.com/photo-1503844281047-cf42eade5ca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGtpdHRlbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        message: state.newPostText,
+        message: action.postText,
       };
 
       let stateCopy = {
@@ -59,11 +51,9 @@ const profileReducer = (state = initialState, action) => {
         postsData: [...state.postsData],
       };
 
-      if (stateCopy.newPostText !== "") {
-        stateCopy.postsData.push(newPost);
-      }
-
-      stateCopy.newPostText = ""; // очищение textarea после публикации поста
+  
+      stateCopy.postsData.push(newPost);
+      
       
       return stateCopy;
     }
@@ -89,12 +79,12 @@ const profileReducer = (state = initialState, action) => {
 
 export default profileReducer;
 
-export let addPostActionCreator = () => {
-  return { type: ADD_POST };
+
+
+export let addPostActionCreator = (postText) => {
+  return { type: ADD_POST, postText };
 };
-export let updateNewPostActionCreator = (value) => {
-  return { type: UPDATE_NEWPOST_TEXT, newText: value };
-};
+
 
 export let setUserProfileAC = (profile) =>{
   return{ type: SET_USER_PROFILE, profile }

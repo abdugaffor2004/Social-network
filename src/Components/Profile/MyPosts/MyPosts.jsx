@@ -1,6 +1,8 @@
 import React from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
+import NewPostForm from './Form/NewPostForm'
+
 
 // import { addPostActionCreator, updateNewPostActionCreator } from '../../../Redux/profile-reducer'  // Импортируем эти функции потому что это не бизнес логика, а своего рода утилиты
 
@@ -11,16 +13,13 @@ const MyPosts = (props) => {
     // profilePage который находится в Profile.jsx
 
     // Получение данных из textarea 1 способ
-    let textareaAnchor = React.createRef()
+    // let textareaAnchor = React.createRef()
     
-    let onAddPostCaller = () => {
-       props.onAddPost()
-    }
 
-    let onPostChangeCaller = () => {
-        const value = textareaAnchor.current.value
-        props.onPostChange(value)
+
+    let addNewPost = (formData) =>{
         
+        props.onAddPost(formData.postText)
     }
 
     return (
@@ -28,10 +27,10 @@ const MyPosts = (props) => {
         <div className={s.myPosts}>
             <h3>My posts</h3>
 
-            <div className={s.newPost}> 
-                <textarea ref={textareaAnchor} placeholder='your news...' rows="3" value={props.newPostText} onChange={onPostChangeCaller}></textarea>
+            <div className={s.newPost}>
 
-                <div className={s.controlls}> <button onClick={onAddPostCaller} className={s.btn} type="submit"> Send </button> </div>
+               <NewPostForm onSubmit={addNewPost} />
+
             </div>
 
 

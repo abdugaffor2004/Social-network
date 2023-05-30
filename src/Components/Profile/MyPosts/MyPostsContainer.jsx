@@ -29,20 +29,17 @@ import MyPosts from "./MyPosts";
 
 let mapStateToProps = (stateCopy) => {
   return {
-    newPostText: stateCopy.profilePage.newPostText,
     postsData: stateCopy.profilePage.postsData,
   };
 };
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    onAddPost: () => {
-      dispatch(addPostActionCreator());
+
+    onAddPost: (postText) => {
+      dispatch(addPostActionCreator(postText));
     },
 
-    onPostChange: (value) => {
-      dispatch(updateNewPostActionCreator(value));
-    },
   };
 };
 

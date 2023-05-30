@@ -30,7 +30,9 @@ export let authApi = {
 
   authMe : () =>{
     return instance.get('auth/me').then( (response) => {return response.data} )
-  }
+  },
+
+  authLogin: (loginData) => instance.post(`/auth/login`, {loginData}).then( (response) => response.data )
 
 }
 
