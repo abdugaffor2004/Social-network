@@ -52,7 +52,7 @@ const profileReducer = (state = initialState, action) => {
       };
 
   
-      stateCopy.postsData.push(newPost);
+      stateCopy.postsData.push(newPost);// 2 способ в dialogsReducer
       
       
       return stateCopy;

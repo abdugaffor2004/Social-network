@@ -1,4 +1,4 @@
-const UPDATE_MESSAGE_TEXT = "UPDATE-MESSAGE-TEXT";
+
 const ADD_MESSAGE = "ADD-MESSAGE";
 
 let initialState = {
@@ -36,7 +36,6 @@ let initialState = {
     { id: 3, message: "Inna Lillahi, Ina illahi Radzhiun" },
   ],
 
-  newMessageText: "",
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -47,38 +46,28 @@ const dialogsReducer = (state = initialState, action) => {
   Просто я думал что меняется только созданная нами копия. */
   
   switch (action.type) {
-    case UPDATE_MESSAGE_TEXT: {
-      //debugger
-      return {
-        ...state,
-        newMessageText: action.newText,
-      };
-    }
+    // case UPDATE_MESSAGE_TEXT: {
+    //   //debugger
+    //   return {
+    //     ...state,
+    //     newMessageText: action.newText,
+    //   };
+    // } Больше не требуется, так как используем redux-forms
 
     case ADD_MESSAGE: {
       //debugger;
       let newMessage = {
-        id: 4,
-        message: state.newMessageText,
+        id: Math.floor(Math.random() *100),
+        message: action.messageText,
       };
 
-      let stateCopy = {
-        ...state,
-        messagesData: [...state.messagesData],
-      };
-
-     /* return {
+      return {
         ...state,
         messagesData: [...state.messagesData, newMessage],
         newMessageText: ""
-      }; Это лучший вариант. Так написали бы если бы не было проверки */
+      }; 
+      // Это лучший вариант
 
-      if (stateCopy.newMessageText !== "") {
-        stateCopy.messagesData.push(newMessage);
-      }
-      stateCopy.newMessageText = "";
-
-      return stateCopy;
     }
 
     default:
@@ -88,9 +77,7 @@ const dialogsReducer = (state = initialState, action) => {
 
 export default dialogsReducer;
 
-export let updateMessageActionCreator = (value) => {
-  return { type: UPDATE_MESSAGE_TEXT, newText: value };
-};
-export let addMessageActionCreator = () => {
-  return { type: ADD_MESSAGE };
+
+export let addMessageActionCreator = (messageText) => {
+  return { type: ADD_MESSAGE, messageText };
 };
