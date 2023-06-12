@@ -1,7 +1,6 @@
 
 
 export const required = (data) =>{
-
     if(data) return undefined
     return 'This field is required'
 }
