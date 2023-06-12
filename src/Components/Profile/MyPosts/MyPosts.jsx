@@ -18,7 +18,6 @@ const MyPosts = (props) => {
 
 
     let addNewPost = (formData) =>{
-        
         props.onAddPost(formData.postText)
     }
 
