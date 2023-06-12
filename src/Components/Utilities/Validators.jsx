@@ -6,7 +6,7 @@ export const required = (data) =>{
 }
 
 export const maxLength = (length) => (data) =>{
-    if(data.length > length) return "Max length is 15 symbols"
+    if(data.length > length) return `Max length is ${length} symbols`
     return undefined
 } // Замыкание
 
