@@ -1,9 +1,9 @@
 
 .errorBorder{
-    border: 1px solid red;
+    border: 1px solid rgb(225, 14, 14);
     
 }
 
 .errorPop{
-    color: red;
+    color: rgb(225, 14, 14);
 }
