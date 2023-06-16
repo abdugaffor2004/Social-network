@@ -1,11 +1,15 @@
+import { connect } from "react-redux"
+import { LoginthunkCreator } from "../../Redux/auth-reducer"
 import LoginReduxForm from "./Form/Form"
 import s from './Login.module.css'
 
 
-const LoginPage = () =>{
+const LoginPage = (props) =>{
 
     const onSubmit = (formData)=>{
         console.log(formData)
+        let {email, password, remeberMe} = formData
+        props.loginThunk(email, password, remeberMe)
     }
 
     return(
@@ -22,4 +26,11 @@ const LoginPage = () =>{
 
 }
 
-export default LoginPage
+
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        loginThunk : (email, password, remeberMe) => dispatch(LoginthunkCreator(email, password, remeberMe)) 
+    }
+}
+
+export default connect( null, mapDispatchToProps )(LoginPage) 

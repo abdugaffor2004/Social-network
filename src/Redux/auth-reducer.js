@@ -47,3 +47,14 @@ export let authThunkCreator = () =>{
   }
 }
 
+
+export let LoginthunkCreator = (email, password, rememberMe) =>{
+  return (dispatch) =>{
+    authApi.authLogin(email, password, rememberMe).then( (response) => {
+      if(response.resultCode === 0){
+        dispatch(authThunkCreator)
+      }
+    } )
+  }
+}
+

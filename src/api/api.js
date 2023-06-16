@@ -32,7 +32,8 @@ export let authApi = {
     return instance.get('auth/me').then( (response) => {return response.data} )
   },
 
-  authLogin: (loginData) => instance.post(`/auth/login`, {loginData}).then( (response) => response.data )
+  authLogin: (email, password, rememberMe=false) => instance.post(`/auth/login`, {email, password, rememberMe}).then( (response) => response.data ),
+  authLogout: () => instance.delete('/auth/login')
 
 }
 

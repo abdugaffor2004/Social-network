@@ -7,9 +7,9 @@ const LoginForm = (props) =>{
 
     return(
         <form onSubmit={props.handleSubmit} className={s.form}>
-            <div> <Field validate={[required]} name='Login' className={s.login} component={customInput} type="text" placeholder="Enter login" /> </div>
-            <div> <Field validate={[required]} name='Password' className={s.password}  component={customInput} type="password" placeholder="Enter password"/> </div> 
-            <div>  <Field name='RememberMe' className={s.checkbox} component={"input"} type="checkbox"/> Remember me </div>
+            <div> <Field validate={[required]} name='email' className={s.login} component={customInput} type="text" placeholder="Enter login" /> </div>
+            <div> <Field validate={[required]} name='password' className={s.password}  component={customInput} type="password" placeholder="Enter password"/> </div> 
+            <div>  <Field name='rememberMe' className={s.checkbox} component={"input"} type="checkbox"/> Remember me </div>
             <div className={s.buttonWrap}> <button className={s.button} type="submit"> Sumbit </button> </div> 
         </form>
     )
