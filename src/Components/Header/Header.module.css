@@ -18,7 +18,7 @@
     align-items: center;
 }
 
-.loginWrap{
+.loginWrap a{
     color: #fff;
     font-size: 18px;
     transition: color 0.2s ease-in;
@@ -29,9 +29,17 @@
     color: #000;
 }
 
-.loginWrap:hover{
+.loginWrap a:hover{
     color: #000;
 }
 
+.logout{
+    margin-left: 25px;
+    transition: fill 0.2s ease-in;;
+}
+
+.logout:hover{
+    fill: #fff;
+}
 
 

@@ -2,6 +2,7 @@ import { connect } from "react-redux"
 import { LoginthunkCreator } from "../../Redux/auth-reducer"
 import LoginReduxForm from "./Form/Form"
 import s from './Login.module.css'
+import { Navigate } from "react-router-dom"
 
 
 const LoginPage = (props) =>{
@@ -11,6 +12,8 @@ const LoginPage = (props) =>{
         let {email, password, remeberMe} = formData
         props.loginThunk(email, password, remeberMe)
     }
+
+    if(props.isAuth) return <Navigate to={'/profile'}/> // Редирект на профиль при успешной логинизации 
 
     return(
         <div className={s.loginPage}>
@@ -33,4 +36,10 @@ const mapDispatchToProps = (dispatch) =>{
     }
 }
 
-export default connect( null, mapDispatchToProps )(LoginPage) 
+const mapStateToProps = (state) =>{
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )(LoginPage) 

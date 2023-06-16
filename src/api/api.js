@@ -33,7 +33,7 @@ export let authApi = {
   },
 
   authLogin: (email, password, rememberMe=false) => instance.post(`/auth/login`, {email, password, rememberMe}).then( (response) => response.data ),
-  authLogout: () => instance.delete('/auth/login')
+  authLogout: () => instance.delete('/auth/login').then( response => response.data )
 
 }
 
