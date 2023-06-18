@@ -1,4 +1,5 @@
 import { authApi } from "../api/api";
+import { setIsFetchingAC } from "./users-reducer";
 
 const SET_AUTH_USER_DATA = "SET-AUTH-USER-DATA ";
 const DELETE_USER_AUTH_DATA = "DELETE-USER-AUTH-DATA";   

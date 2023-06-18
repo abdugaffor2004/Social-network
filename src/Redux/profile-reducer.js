@@ -97,7 +97,7 @@ export let setProfileStatusAC = (profileStatus) =>{
 
 
 
-export let getProfileThunkCreator = (userId = 28690) => {
+export let getProfileThunkCreator = (userId) => {
 
   return(dispatch) =>{
    
@@ -108,7 +108,7 @@ export let getProfileThunkCreator = (userId = 28690) => {
 
 }
 
-export let setProfileStatusThunkCreator = (userId = 28690) =>{
+export let setProfileStatusThunkCreator = (userId) =>{
   return (dispatch)=>{
     profileApi.getStatus(userId).then( (response) => dispatch( setProfileStatusAC(response) ))
   }

@@ -13,10 +13,9 @@ class ProfileContainer extends React.Component{
     componentDidMount = () =>{
         let userId = this.props.router.params.userId
 
-        // if(!userId){userId = 28690}
-        //     profileApi.getProfile(userId).then((response) => {
-        //     this.props.setUserProfile(response) 
-        // })
+        if(!userId && this.props.isAuth){
+            userId = this.props.authorizedUserId
+        }
 
         this.props.getProfileThunk(userId)
         this.props.setProfileStatusThunk(userId) // получаем из API статус и записываем его в state(используем thunk) 
@@ -36,7 +35,9 @@ class ProfileContainer extends React.Component{
 let mapStateToProps = (state) => {
     return{
         profile: state.profilePage.profile,
-        profileStatus: state.profilePage.profileStatus
+        profileStatus: state.profilePage.profileStatus,
+        authorizedUserId: state.auth.id,
+        isAuth: state.auth.isAuth
         
     }
 }
