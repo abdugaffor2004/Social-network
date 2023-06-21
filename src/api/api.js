@@ -32,8 +32,14 @@ export let authApi = {
     return instance.get('auth/me').then( (response) => {return response.data} )
   },
 
-  authLogin: (email, password, rememberMe=false) => instance.post(`/auth/login`, {email, password, rememberMe}).then( (response) => response.data ),
-  authLogout: () => instance.delete('/auth/login').then( response => response.data )
+  authLogin: (email, password, rememberMe=false, captcha=null) => instance.post(`/auth/login`, {email, password, rememberMe, captcha}).then( (response) => response.data ),
+  authLogout: () => instance.delete('/auth/login').then( response => response.data ),
+
+}
+
+export let securityApi = {
+
+  getCaptcha: () => instance.get('/security/get-captcha-url').then( response => response.data)
 
 }
 

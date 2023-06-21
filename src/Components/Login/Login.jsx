@@ -9,8 +9,8 @@ const LoginPage = (props) =>{
 
     const onSubmit = (formData)=>{
         console.log(formData)
-        let {email, password, remeberMe} = formData
-        props.loginThunk(email, password, remeberMe)
+        let {email, password, rememberMe, captchaValue} = formData
+        props.loginThunk(email, password, rememberMe, captchaValue)
     }
 
     if(props.isAuth) return <Navigate to={'/profile'}/> // Редирект на профиль при успешной логинизации 
@@ -21,7 +21,8 @@ const LoginPage = (props) =>{
             <h1>LOGIN PAGE</h1>
 
             <div className={s.formWrap}>
-                <LoginReduxForm onSubmit={onSubmit}/>
+                <LoginReduxForm {...props} onSubmit={onSubmit}/>
+
             </div>
             
         </div>
@@ -32,13 +33,14 @@ const LoginPage = (props) =>{
 
 const mapDispatchToProps = (dispatch) =>{
     return {
-        loginThunk : (email, password, remeberMe) => dispatch(LoginthunkCreator(email, password, remeberMe)) 
+        loginThunk : (email, password, remeberMe, captchaValue) => dispatch(LoginthunkCreator(email, password, remeberMe, captchaValue)) 
     }
 }
 
 const mapStateToProps = (state) =>{
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 

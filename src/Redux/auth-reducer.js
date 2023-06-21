@@ -1,8 +1,8 @@
-import { authApi } from "../api/api";
-import { setIsFetchingAC } from "./users-reducer";
+import { authApi, securityApi } from "../api/api";
 
 const SET_AUTH_USER_DATA = "SET-AUTH-USER-DATA ";
-const DELETE_USER_AUTH_DATA = "DELETE-USER-AUTH-DATA";   
+const DELETE_USER_AUTH_DATA = "DELETE-USER-AUTH-DATA";  
+const SET_CAPTCHA_URL = "SET-CAPTCHA-URL";
 
 
 
@@ -11,6 +11,8 @@ let initialState = {
     eMail: null,
     login: null,
     isAuth: false,
+    captchaUrl: null,
+    
 };
 
 const authReducer = (state = initialState, action) => {
@@ -30,7 +32,15 @@ const authReducer = (state = initialState, action) => {
         id: null,
         email: null,
         login: null,
-        isAuth: false
+        isAuth: false,
+        captchaUrl: null
+      }
+    }
+
+    case SET_CAPTCHA_URL:{
+      return{
+        ...state,
+        captchaUrl: action.Url
       }
     }
 
@@ -49,6 +59,10 @@ export let deleteAuthUserData = ()=>{
   return {type: DELETE_USER_AUTH_DATA}
 }
 
+export let setCaptchaUrlAC = (Url) =>{
+  return{ type: SET_CAPTCHA_URL, Url }
+}
+
 
 export let authThunkCreator = () =>{
   return (dispatch) =>{
@@ -63,11 +77,14 @@ export let authThunkCreator = () =>{
 }
 
 
-export let LoginthunkCreator = (email, password, rememberMe) =>{
+export let LoginthunkCreator = (email, password, rememberMe, captchaValue) =>{
   return (dispatch) =>{
-    authApi.authLogin(email, password, rememberMe).then( (response) => {
+    authApi.authLogin(email, password, rememberMe, captchaValue).then( (response) => {
       if(response.resultCode === 0){
         dispatch(authThunkCreator())
+      }
+      else if(response.resultCode === 10){
+        dispatch(captchaThunkCreator())
       }
     } )
   }
@@ -85,3 +102,11 @@ export let LogoutThunkCreator = () =>{
   }
 }
 
+
+export let captchaThunkCreator = () =>{
+  return (dispatch) =>{
+    securityApi.getCaptcha().then( response =>{
+      dispatch( setCaptchaUrlAC(response.url) )
+    } )
+  }
+}

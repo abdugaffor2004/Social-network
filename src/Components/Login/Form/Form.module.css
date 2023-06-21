@@ -4,6 +4,7 @@
     padding: 40px;
     border-radius: 5px;
     background: rgb(13, 180, 102);
+    
 }
 
 .login, .password, .checkbox{
@@ -44,4 +45,14 @@
 
 .button:active{
     color: #000;
+}
+
+.captchaWrap{
+    display: flex;
+    flex-direction: column;
+}
+
+.captchaWrap img{
+    margin: 30px 0 10px;
+    width: 150px;
 }
