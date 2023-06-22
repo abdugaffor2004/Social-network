@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import {
-  addPostActionCreator,
-  updateNewPostActionCreator,
+  addPostActionCreator
 } from "../../../Redux/profile-reducer"; // Импортируем эти функции потому что это не бизнес логика, а своего рода утилиты
 import MyPosts from "./MyPosts";
 

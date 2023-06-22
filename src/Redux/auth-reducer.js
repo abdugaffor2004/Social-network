@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { authApi, securityApi } from "../api/api";
 
 const SET_AUTH_USER_DATA = "SET-AUTH-USER-DATA ";
@@ -79,6 +80,7 @@ export let authThunkCreator = () =>{
 
 export let LoginthunkCreator = (email, password, rememberMe, captchaValue) =>{
   return (dispatch) =>{
+
     authApi.authLogin(email, password, rememberMe, captchaValue).then( (response) => {
       if(response.resultCode === 0){
         dispatch(authThunkCreator())
@@ -86,7 +88,11 @@ export let LoginthunkCreator = (email, password, rememberMe, captchaValue) =>{
       else if(response.resultCode === 10){
         dispatch(captchaThunkCreator())
       }
+      else{
+        dispatch( stopSubmit( 'login', {_error: response.messages[0]} ) )
+      }
     } )
+
   }
 }
 
