@@ -6,6 +6,7 @@ import Profile from "./Profile";
 import withRouter from "../../HOC/withRouter";
 import { withAuthRedirect } from "../../HOC/withAuthRedirect";
 import { compose } from "redux";
+import { getAuthorizedUserId, getIsAuth, getProfile, getProfileStatus } from "../../Redux/Selectors/profile-selector";
 
 
 
@@ -32,12 +33,23 @@ class ProfileContainer extends React.Component{
 
 }
 
+
+// let mapStateToProps = (state) => {
+//     return{
+//         profile: state.profilePage.profile,
+//         profileStatus: state.profilePage.profileStatus,
+//         authorizedUserId: state.auth.id,
+//         isAuth: state.auth.isAuth
+        
+//     }
+// }
+
 let mapStateToProps = (state) => {
     return{
-        profile: state.profilePage.profile,
-        profileStatus: state.profilePage.profileStatus,
-        authorizedUserId: state.auth.id,
-        isAuth: state.auth.isAuth
+        profile: getProfile(state),
+        profileStatus: getProfileStatus(state),
+        authorizedUserId: getAuthorizedUserId(state),
+        isAuth: getIsAuth(state)
         
     }
 }
