@@ -10,12 +10,27 @@ import FindUsersContainer1 from './Components/FindUsers/FindUsersContainer_1';
 import ProfileContainer from './Components/Profile/ProfileContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
 import LoginPage from './Components/Login/Login';
+import React from 'react';
+import { connect } from 'react-redux';
+
+import { toInitializeAppThunkCreator } from './Redux/app-reducer';
+import Preloader from './Common/Preloader/Preloader';
 
 
 
-const App = (props) => {
+class App extends React.Component{
 
-  return (
+  componentDidMount() {
+    this.props.toInitializeAppThunk()
+  }
+
+  render(){
+
+    if(!this.props.isInitialized){  
+      return <Preloader />
+    }
+
+    return (
   
     
       <div className='appWrapper'>
@@ -39,8 +54,21 @@ const App = (props) => {
       </div>
     
   );
+
+  }
+  
 }
 
+const mapStateToProps = (state) =>{
+  return {
+    isInitialized: state.app.isInitialized
+  }
+}
 
+const mapDispatchToProps = (dispatch) => {
+  return{
+   toInitializeAppThunk: () => dispatch( toInitializeAppThunkCreator() )
+  }
+}
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App) 

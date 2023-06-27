@@ -65,17 +65,16 @@ export let setCaptchaUrlAC = (Url) =>{
 }
 
 
-export let authThunkCreator = () =>{
-  return (dispatch) =>{
-    authApi.authMe().then((response) => {
-      if(response.resultCode === 0){
-          let {id, email, login} = response.data
-          dispatch( setAuthUserDataAC( id, email, login ) )  // Эти параметры должны быть такими же как в API
-      }
+export let authThunkCreator = () => (dispatch) =>{
+  return authApi.authMe().then((response) => { 
+    if(response.resultCode === 0){
+        let {id, email, login} = response.data
+        dispatch( setAuthUserDataAC( id, email, login ) )  // Эти параметры должны быть такими же как в API
+    }
 
   })
-  }
 }
+
 
 
 export let LoginthunkCreator = (email, password, rememberMe, captchaValue) =>{
