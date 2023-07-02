@@ -1,12 +1,13 @@
 import MainImage from './MainImage/MainImage'
-import ProfileInfo from './ProfileInfo/ProfileInfo'
 import s from './Profile.module.css'
 import '../../reset.css'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
+import ProfileInfoHook from './ProfileInfo/ProfileInfoHook'
+import ProfileInfoClass from './ProfileInfo/ProfileInfoClass'
 
 
 const Profile = (props) => {
-
+console.log('Profile Rendered')
     return (
 
         <div>
@@ -16,7 +17,8 @@ const Profile = (props) => {
             </div>
 
             <div className={s.container}>
-                <ProfileInfo {...props} profile={props.profile} updateProfileStatusThunk={props.updateProfileStatusThunk}/>
+                <ProfileInfoHook {...props} profile={props.profile} updateProfileStatusThunk={props.updateProfileStatusThunk}/>
+                
             </div>
 
             <div className={s.container}>

@@ -3,7 +3,7 @@ import React from 'react'
 import Preloader from '../../../Common/Preloader/Preloader'
 import s from './ProfileInfo.module.css'
  
- class ProfileInfo extends React.Component{
+ class ProfileInfoClass extends React.Component{
 
 
     state = {
@@ -36,7 +36,7 @@ import s from './ProfileInfo.module.css'
 
     
     render(){
-        
+        console.log('ProfileInfo rendered')
         if(!this.props.profile){
             return <Preloader />
         } //без этого ничего не будет работать. Если profile===null => <Preloader />
@@ -75,4 +75,4 @@ import s from './ProfileInfo.module.css'
 
  }
 
- export default ProfileInfo
+ export default ProfileInfoClass
