@@ -26,12 +26,12 @@ import s from './ProfileInfo.module.css'
         this.setState({localStatus: value})
     }
 
-    componentDidUpdate =(prevProps) =>{
-        if(prevProps.profileStatus !== this.props.profileStatus){
-            this.setState({localStatus: this.props.profileStatus})
-        }
+    // componentDidUpdate =(prevProps) =>{
+    //     if(prevProps.profileStatus !== this.props.profileStatus){
+    //         this.setState({localStatus: this.props.profileStatus})
+    //     }
         
-    }
+    // }
 
 
     

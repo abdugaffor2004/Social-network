@@ -10,6 +10,7 @@ import { getAuthorizedUserId, getIsAuth, getProfile, getProfileStatus } from "..
 
 
 
+
 class ProfileContainer extends React.Component{
     componentDidMount = () =>{
         let userId = this.props.router.params.userId
@@ -26,8 +27,11 @@ class ProfileContainer extends React.Component{
     
 
     render(){
+        
         return(
-            <Profile {...this.props} profile={this.props.profile} updateProfileStatusThunk={this.props.updateProfileStatusThunk}/>
+            
+            <Profile {...this.props} profile={this.props.profile} updateProfileStatusThunk={this.props.updateProfileStatusThunk}/> 
+            
         )
     }
 
@@ -49,7 +53,8 @@ let mapStateToProps = (state) => {
         profile: getProfile(state),
         profileStatus: getProfileStatus(state),
         authorizedUserId: getAuthorizedUserId(state),
-        isAuth: getIsAuth(state)
+        isAuth: getIsAuth(state),
+        isInitialized: state.app.isInitialized
         
     }
 }

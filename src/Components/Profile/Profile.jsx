@@ -4,10 +4,14 @@ import '../../reset.css'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 import ProfileInfoHook from './ProfileInfo/ProfileInfoHook'
 import ProfileInfoClass from './ProfileInfo/ProfileInfoClass'
+import { memo } from 'react'
 
+// window.props = [] // для сравнивания пропсов
 
-const Profile = (props) => {
-console.log('Profile Rendered')
+const Profile = memo( (props) => {
+//console.log('Profile Rendered')
+// window.props.push(props) // для сравнивания пропсов
+
     return (
 
         <div>
@@ -29,6 +33,6 @@ console.log('Profile Rendered')
 
     )
 
-}
+})
 
 export default Profile

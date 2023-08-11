@@ -1,8 +1,10 @@
+import { memo } from "react";
 import s from "./FindUsers.module.css";
 import User from "./User/User";
 
 
-const FindUsers = (props) => {
+const FindUsers = memo((props) => {
+  console.log('render')
   let UserList = props.users.map((item) => (
     <User
       key={item.id}
@@ -55,6 +57,6 @@ const FindUsers = (props) => {
     </div>
   );
 
-};
+});
 
 export default FindUsers;

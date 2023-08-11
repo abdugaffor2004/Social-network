@@ -32,7 +32,7 @@ class App extends React.Component{
 
     return (
   
-    
+      
       <div className='appWrapper'>
 
         <HeaderContainer />
@@ -49,7 +49,7 @@ class App extends React.Component{
             <Route path='/login' element={<LoginPage />} />
             {/* Звевдочка ставится чтобы Rout также отслеживал вложенные пути ввида /dialogs/3 */}
           </Routes>
-
+        
 
       </div>
     

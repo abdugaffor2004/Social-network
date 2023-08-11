@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Preloader from '../../../Common/Preloader/Preloader'
 import s from './ProfileInfo.module.css'
  
@@ -8,6 +8,10 @@ const ProfileInfoHook = (props) => {
 
     let [editMode, setEditMode] = useState(false)
     let [localStatus, setLocalStatus] = useState(props.profileStatus)
+
+    useEffect( () =>{
+        setLocalStatus(props.profileStatus)
+    }, [props.profileStatus] )
 
     const editModeOn = () =>{
        setEditMode(true)
