@@ -1,7 +1,7 @@
 import { Field, reduxForm } from 'redux-form'
 import s from './Form.module.css'
-import { required } from '../../Utilities/Validators'
 import { customInput } from '../../../Common/FormControll/FormControll'
+import { required } from '../../../Utilities/Validators'
 
 
 const LoginForm = (props) =>{

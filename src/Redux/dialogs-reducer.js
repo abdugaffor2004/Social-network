@@ -1,5 +1,5 @@
 
-const ADD_MESSAGE = "ADD-MESSAGE";
+const ADD_MESSAGE = "dialogs/ADD-MESSAGE";
 
 let initialState = {
   dialogsData: [
@@ -40,10 +40,6 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
   
-  /* Здесь есть одна непонятная мне вещь(поставь дебаггер после кейсов и увидишь). 
-  После того как срабатывает Update_message_text 'state=initialState', 
-  который в параметрах не меняется как и должно бытьб но после того как добавляется сообщение этот state меняется на значение newText.
-  Просто я думал что меняется только созданная нами копия. */
   
   switch (action.type) {
     // case UPDATE_MESSAGE_TEXT: {

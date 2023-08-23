@@ -1,8 +1,8 @@
 import { profileApi } from "../api/api";
 
-const ADD_POST = "ADD-POST";
-const SET_USER_PROFILE = "SET-USER-PROFILE";
-const SET_PROFILE_STATUS = "SET-PROFILE-STATUS";
+const ADD_POST = "profile/ADD-POST";
+const SET_USER_PROFILE = "profile/SET-USER-PROFILE";
+const SET_PROFILE_STATUS = "profile/SET-PROFILE-STATUS";
 
 let initialState = {
   postsData: [
@@ -36,10 +36,9 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    
 
     case ADD_POST: {
-      //debugger
+
       let newPost = {
         id: Math.floor(Math.random() * 100),
         img: "https://images.unsplash.com/photo-1503844281047-cf42eade5ca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGtpdHRlbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
@@ -51,22 +50,22 @@ const profileReducer = (state = initialState, action) => {
         postsData: [...state.postsData],
       };
 
-  
+
       stateCopy.postsData.push(newPost);// 2 способ в dialogsReducer
-      
-      
+
+
       return stateCopy;
     }
 
-    case SET_USER_PROFILE:{
-      return{
+    case SET_USER_PROFILE: {
+      return {
         ...state,
         profile: action.profile
       }
     }
 
-    case SET_PROFILE_STATUS:{
-      return{
+    case SET_PROFILE_STATUS: {
+      return {
         ...state,
         profileStatus: action.profileStatus
       }
@@ -86,12 +85,12 @@ export let addPostActionCreator = (postText) => {
 };
 
 
-export let setUserProfileAC = (profile) =>{
-  return{ type: SET_USER_PROFILE, profile }
+export let setUserProfileAC = (profile) => {
+  return { type: SET_USER_PROFILE, profile }
 }
 
-export let setProfileStatusAC = (profileStatus) =>{
-  return {type: SET_PROFILE_STATUS, profileStatus}
+export let setProfileStatusAC = (profileStatus) => {
+  return { type: SET_PROFILE_STATUS, profileStatus }
 }
 
 
@@ -99,31 +98,31 @@ export let setProfileStatusAC = (profileStatus) =>{
 
 export let getProfileThunkCreator = (userId) => {
 
-  return(dispatch) =>{
-   
-      profileApi.getProfile(userId).then((response) => {
-          dispatch( setUserProfileAC(response) ) 
-      })
+  return (dispatch) => {
+
+    profileApi.getProfile(userId).then((response) => {
+      dispatch(setUserProfileAC(response))
+    })
   }
 
 }
 
-export let setProfileStatusThunkCreator = (userId) =>{
-  return (dispatch)=>{
-    profileApi.getStatus(userId).then( (response) => dispatch( setProfileStatusAC(response) ))
+export let setProfileStatusThunkCreator = (userId) => {
+  return (dispatch) => {
+    profileApi.getStatus(userId).then((response) => dispatch(setProfileStatusAC(response)))
   }
 }
 
 export let updateProfileStatusThunkCreator = (profileStatus) => {
-  return (dispatch) =>{
-    profileApi.updateStatus(profileStatus).then( response =>{
+  return (dispatch) => {
+    profileApi.updateStatus(profileStatus).then(response => {
 
-      if(response.resultCode===0){
-        dispatch( setProfileStatusAC(profileStatus) )
-        
+      if (response.resultCode === 0) {
+        dispatch(setProfileStatusAC(profileStatus))
+
       }
 
-    } )
+    })
   }
 }
 

@@ -8,9 +8,9 @@ export const instance = axios.create({
 
 export let userApi = {
 
-  getUsers: (pageSize = 7, currentPage = 1) => {
-    return instance.get(`users?count=${pageSize}&page=${currentPage}`)
-      .then((response) => response.data);
+  getUsers: async (pageSize = 7, currentPage = 1) => {
+    return (await instance.get(`users?count=${pageSize}&page=${currentPage}`)).data
+      // можно и так, без then
   },
 
   followUser: (userId) => {

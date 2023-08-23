@@ -1,3 +1,4 @@
+import { updateObjectInArray } from "../Utilities/helperFunctions";
 import { userApi } from "../api/api";
 
 const FOLLOW = "FOLLOW";
@@ -21,26 +22,22 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW: {
       return {
         ...state,
-        //users: [...state.users] В этом случае так копировать не получится
-        users: state.users.map((u) => {
-          if (u.id === action.userId) {
-            return { ...u, followed: true };
-          }
-          return u;
-        }),
+        users: updateObjectInArray(state.users, 'id', action.userId, {followed: true}),
       };
     }
 
     case UNFOLLOW: {
       return {
         ...state,
-        users: state.users.map((u) => {
-          if (u.id === action.userId) {
-            return { ...u, followed: false };
-          }
+        // users: state.users.map((u) => {
+        //   if (u.id === action.userId) {
+        //     return { ...u, followed: false };
+        //   }
 
-          return u;
-        }),
+        //   return u;
+        // }), вынесли эту логику в отдельную функцию helper
+
+        users: updateObjectInArray(state.users, 'id', action.userId, {followed: false})
       };
     }
 
@@ -103,9 +100,6 @@ export let toggleFollowingProgressAC = (isFetchingStatus) => {
   return { type: SET_FOLLOWING_IN_PROGRESS, isFetchingStatus };
 };
 
-// export let setTotalAC = (totalUsersCount) => {
-//   return { type: SET_TOTAL, totalUsersCount };
-// };
 
 export let getUsersThunkCreator = (pageSize, currentPage) => {
   return (dispatch) => {
@@ -139,34 +133,45 @@ export let setCurrentPageThunkCreator = (pageSize, currentPage) =>{
 
 export let unfollowThunkCreator = (userId) =>{
 
-  return (dispatch) =>{
+  // return (dispatch) =>{
+  //   dispatch( setIsFetchingAC(true) ) 
+  //   userApi.unfollowUser(userId).then((response) => {
+  //     if(response.resultCode === 0) dispatch( unfollowAC(userId) )  
+  //     dispatch( setIsFetchingAC(false) ) 
+  //   });
 
-    dispatch( setIsFetchingAC(true) ) 
+  // }
 
-    userApi.unfollowUser(userId).then((response) => {
-      
-      if(response.resultCode === 0) dispatch( unfollowAC(userId) )   
-
-      dispatch( setIsFetchingAC(false) ) 
-      
-    });
-
-  }
+  return followUnfollowTempplate(userApi.unfollowUser, unfollowAC, userId)
 
 }
 
 export let followThunkCreator = (userId) =>{
 
-  return (dispatch) =>{
+  // return (dispatch) =>{
 
-    dispatch( setIsFetchingAC(true) ); 
+  //   dispatch( setIsFetchingAC(true) ); 
 
-    userApi.followUser(userId).then( (response) => { 
-      if(response.resultCode === 0){ dispatch( followAC(userId) )  }
+  //   userApi.followUser(userId).then( (response) => { 
+  //     if(response.resultCode === 0){ dispatch( followAC(userId) )  }
       
-      dispatch( setIsFetchingAC(false) ) 
-    });
+  //     dispatch( setIsFetchingAC(false) ) 
+  //   });
 
-  }
+  // } // Избавились от дублирования кода
+
+  return followUnfollowTempplate(userApi.followUser, followAC, userId)
 
 }
+
+let followUnfollowTempplate = (apiFunc, actionCreator, payload) => (dispatch) => {
+    dispatch(setIsFetchingAC(true));
+
+    apiFunc(payload).then((response) => {
+      if (response.resultCode === 0) { dispatch(actionCreator(payload)) }
+      dispatch(setIsFetchingAC(false))
+    });
+
+  
+}
+

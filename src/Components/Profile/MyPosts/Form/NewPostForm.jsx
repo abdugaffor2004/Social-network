@@ -1,7 +1,7 @@
 import { Field, reduxForm } from "redux-form"
 import s from './NewPostForm.module.css'
-import { maxLength10, required } from "../../../Utilities/Validators"
 import { customTextarea } from "../../../../Common/FormControll/FormControll"
+import { maxLength10, required } from "../../../../Utilities/Validators"
 
 
 const NewPostForm = (props) =>{

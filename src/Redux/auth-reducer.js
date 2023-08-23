@@ -1,9 +1,10 @@
 import { stopSubmit } from "redux-form";
 import { authApi, securityApi } from "../api/api";
 
-const SET_AUTH_USER_DATA = "SET-AUTH-USER-DATA ";
-const DELETE_USER_AUTH_DATA = "DELETE-USER-AUTH-DATA";  
-const SET_CAPTCHA_URL = "SET-CAPTCHA-URL";
+
+const SET_AUTH_USER_DATA = "auth/SET-AUTH-USER-DATA ";
+const DELETE_USER_AUTH_DATA = "auth/DELETE-USER-AUTH-DATA";  
+const SET_CAPTCHA_URL = "auth/SET-CAPTCHA-URL"; // redux-ducks
 
 
 
@@ -65,14 +66,14 @@ export let setCaptchaUrlAC = (Url) =>{
 }
 
 
-export let authThunkCreator = () => (dispatch) =>{
-  return authApi.authMe().then((response) => { 
+export let authThunkCreator = () => async (dispatch) =>{
+  let response = await authApi.authMe() 
+
     if(response.resultCode === 0){
         let {id, email, login} = response.data
         dispatch( setAuthUserDataAC( id, email, login ) )  // Эти параметры должны быть такими же как в API
     }
 
-  })
 }
 
 
