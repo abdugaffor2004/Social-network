@@ -9,18 +9,6 @@ class FindUsersContainer_2 extends React.Component {
     this.props.getUsersThunk(this.props.pageSize, this.props.currentPage)
   }
 
-  setCurrentPageCaller = (currentPage) => {
-    // this.props.setIsFetching(true); //Пока делается ассинхронный запрос показывается спиннер
-    
-    //   userApi.getUsers(this.props.pageSize, currentPage).then((response) => {
-    //     this.props.setUsers(response.items);
-    //     this.props.setIsFetching(false); // После запроса спиннер убирается
-    //   });
-
-    //this.props.setCurrentPage(currentPage);
-    
-    this.props.setCurrentPageThunk(this.props.pageSize, currentPage)
-  };
 
   render() {
 
@@ -30,11 +18,11 @@ class FindUsersContainer_2 extends React.Component {
         <FindUsers
           
           users={this.props.users}
-          totalPageCount={this.props.totalPageCount}
+          totalUsersCount={this.props.totalUsersCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
-          setCurrentPageCaller={this.setCurrentPageCaller}
-          
+
+          setCurrentPageThunk = {this.props.setCurrentPageThunk}
           unfollowThunk={this.props.unfollowThunk}
           followThunk={this.props.followThunk}
         />

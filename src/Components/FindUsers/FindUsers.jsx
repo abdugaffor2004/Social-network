@@ -1,6 +1,7 @@
 import { memo } from "react";
 import s from "./FindUsers.module.css";
 import User from "./User/User";
+import Paginator from "../../Common/Paginator/Paginator";
 
 
 const FindUsers = memo((props) => {
@@ -27,12 +28,7 @@ const FindUsers = memo((props) => {
   ));
 
 
- let pagesCount = props.totalPageCount/props.pageSize; //Сколько страниц получается
-
- let pages =[] //массив из цифр(номеров страниц)
- for(let i=1; i<=pagesCount; i++){
-    pages.push(i)
- }
+ 
 
 
   return (
@@ -40,14 +36,7 @@ const FindUsers = memo((props) => {
 
       <h2>USERS</h2>
 
-      <div className={s.pagination}>
-
-        {
-          pages.map( (page) =>{
-            return <button onClick={ () => props.setCurrentPageCaller(page)} className={ props.currentPage === page ? s.selectedPage : null}> {page} </button>
-          })//Перебираем массив pages и отрисовываем кнопки пагинации, выделяем активную копку
-        } 
-      </div>
+      <Paginator setCurrentPageThunk={props.setCurrentPageThunk} pageSize = {props.pageSize} totalUsersCount = {props.totalUsersCount} currentPage = {props.currentPage}/>
       
       <div className={s.container}>
         {UserList}

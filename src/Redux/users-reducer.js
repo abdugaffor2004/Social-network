@@ -7,11 +7,12 @@ const SET_USERS = "SET-USERS";
 const SET_CURRENT_PAGE = "SET-CURRENT-PAGE";
 const SET_ISFETCHING = "SET-ISFETCHING";
 const SET_FOLLOWING_IN_PROGRESS = "SET-FOLLOWING-IN-PROGRESS";
+const SET_TOTAL_USER_COUNT = "SET_TOTAL_USER_COUNT"
 
 const initialState = {
   users: [],
   pageSize: 5,
-  totalPageCount: 70,
+  totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
   followingInProgress: false,
@@ -69,6 +70,13 @@ const usersReducer = (state = initialState, action) => {
       };
     }
 
+    case SET_TOTAL_USER_COUNT:{
+      return {
+        ...state,
+        totalUsersCount: action.totalUsersCount
+      }
+    }
+
     default:
       return state;
   }
@@ -100,6 +108,12 @@ export let toggleFollowingProgressAC = (isFetchingStatus) => {
   return { type: SET_FOLLOWING_IN_PROGRESS, isFetchingStatus };
 };
 
+export let setTotalUsersCountAC = (totalUsersCount) =>{
+  return {type: SET_TOTAL_USER_COUNT, totalUsersCount}
+}
+
+
+
 
 export let getUsersThunkCreator = (pageSize, currentPage) => {
   return (dispatch) => {
@@ -108,7 +122,9 @@ export let getUsersThunkCreator = (pageSize, currentPage) => {
     userApi
       .getUsers(pageSize, currentPage)
       .then((response) => {
-       dispatch( setUsersAC(response.items) ) ;
+        console.log(response)
+        dispatch( setUsersAC(response.items) ) ;
+        dispatch( setTotalUsersCountAC(response.totalCount) )
         dispatch( setIsFetchingAC(false) ) ; // После запроса спиннер убирается
       });
   };
