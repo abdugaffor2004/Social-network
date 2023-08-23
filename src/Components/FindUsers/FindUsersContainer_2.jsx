@@ -28,10 +28,6 @@ class FindUsersContainer_2 extends React.Component {
       <div style={{ position: "relative" }}>
         {this.props.isFetching === true ? <Preloader /> : null}
         <FindUsers
-          // follow={this.props.follow}           
-          // setIsFetching={this.props.setIsFetching} больше не используется так как мы внедрили санки
-          // unfollow={this.props.unfollow}
-          // followingInProgress={this.props.followingInProgress}
           
           users={this.props.users}
           totalPageCount={this.props.totalPageCount}

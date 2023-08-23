@@ -8,7 +8,6 @@ import { Navigate } from "react-router-dom"
 const LoginPage = (props) =>{
 
     const onSubmit = (formData)=>{
-        console.log(formData)
         let {email, password, rememberMe, captchaValue} = formData
         props.loginThunk(email, password, rememberMe, captchaValue)
     }

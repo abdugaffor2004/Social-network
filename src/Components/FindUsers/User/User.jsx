@@ -22,14 +22,6 @@ const User = (props) => {
 
   const followCaller = ()=>{
 
-    // props.setIsFetching(true)
-
-    // userApi.followUser(props.userId).then( (response) => { 
-    //   if(response.resultCode === 0){ props.follow(props.userId) }
-      
-    //   props.setIsFetching(false)
-    // });
-
     props.followThunk(props.userId)
     
   }

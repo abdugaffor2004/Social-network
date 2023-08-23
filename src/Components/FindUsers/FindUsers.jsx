@@ -4,7 +4,7 @@ import User from "./User/User";
 
 
 const FindUsers = memo((props) => {
-  console.log('render')
+  
   let UserList = props.users.map((item) => (
     <User
       key={item.id}
@@ -34,7 +34,7 @@ const FindUsers = memo((props) => {
     pages.push(i)
  }
 
-// debugger
+
   return (
     <div className={s.findUsers}>
 
