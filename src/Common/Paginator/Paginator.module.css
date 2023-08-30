@@ -1,0 +1,33 @@
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  
+  .pagination button {
+    font-size: 16px;
+    padding: 5px 12px;
+    color: #000;
+  }
+  
+
+    .selectedPage{
+        font-weight: bold;
+        background: rgb(13, 180, 102);
+        border-radius: 5px;
+    }
+
+    .prevNextPortionButton{
+        font-weight: bold;
+        color: rgb(13, 180, 102) !important;
+        margin: 0px 5px;
+    }
+
+    .prevNextPortionButton:hover{
+        
+        color: black !important;
+        background-color: rgb(13, 180, 102);
+        border-radius: 5px;
+    }
