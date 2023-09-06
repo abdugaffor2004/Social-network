@@ -12,4 +12,5 @@
 
 .preloaderWrap img{
     margin-top: 200px ;
+    user-select: none; /* отменяет выделение картинки мышкой */
 }

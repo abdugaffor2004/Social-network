@@ -34,7 +34,7 @@ const Paginator = (props, {portionSize=10}) =>{
     {
       pages.filter( (p) => p >= infignum && p <= supremum )
       .map( (page) =>{
-        return <button onClick={ () => setCurrentPageCaller(page)} className={ (props.currentPage === page) ? s.selectedPage : null}> {page} </button>
+        return <button key={page} onClick={ () => setCurrentPageCaller(page)} className={ (props.currentPage === page) ? s.selectedPage : null}> {page} </button>
       }) //Перебираем массив pages и отрисовываем кнопки пагинации в отрезке от infignum до supremum, выделяем активную копку
     } 
 

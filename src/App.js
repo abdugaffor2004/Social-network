@@ -1,4 +1,4 @@
-
+import Preloader from './Common/Preloader/Preloader';
 import './App.css';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import { Route, Routes } from 'react-router-dom';
@@ -6,15 +6,20 @@ import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import NavbarContainer from './Components/Navbar/NavbarContainer';
-import FindUsersContainer1 from './Components/FindUsers/FindUsersContainer_1';
+//import FindUsersContainer1 from './Components/FindUsers/FindUsersContainer_1';
 import ProfileContainer from './Components/Profile/ProfileContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
 import LoginPage from './Components/Login/Login';
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 
 import { toInitializeAppThunkCreator } from './Redux/app-reducer';
-import Preloader from './Common/Preloader/Preloader';
+
+import { compose } from 'redux';
+import { withBoundary } from './HOC/withBoundary';
+
+const FindUsersContainer1 = lazy( () => import('./Components/FindUsers/FindUsersContainer_1') )
+
 
 
 
@@ -30,6 +35,7 @@ class App extends React.Component{
       return <Preloader />
     }
 
+
     return (
   
       
@@ -39,17 +45,18 @@ class App extends React.Component{
 
         <NavbarContainer />
 
+        <Suspense fallback={<>Loading...</>}>
           <Routes>
-            <Route path='/profile/:userId?' element={<ProfileContainer />} />
+            <Route path='/profile/:userId?' element={ <ProfileContainer />    } /> 
             <Route path="/dialogs/*" element={<DialogsContainer />} />
             <Route path='/news/*' element={<News />} />
             <Route path='/music/*' element={<Music />} />
             <Route path='/settings/*' element={<Settings />} />
-            <Route path='/users/*' element={<FindUsersContainer1 />} />
+            <Route path='/users/*' element={<FindUsersContainer1 />} /> 
             <Route path='/login' element={<LoginPage />} />
             {/* Звевдочка ставится чтобы Rout также отслеживал вложенные пути ввида /dialogs/3 */}
           </Routes>
-        
+        </Suspense>
 
       </div>
     
@@ -71,4 +78,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App) 
+
+
+export default compose(
+  withBoundary,
+  connect(mapStateToProps, mapDispatchToProps) 
+) (App)

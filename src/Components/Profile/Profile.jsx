@@ -3,8 +3,8 @@ import s from './Profile.module.css'
 import '../../reset.css'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 import ProfileInfoHook from './ProfileInfo/ProfileInfoHook'
-import ProfileInfoClass from './ProfileInfo/ProfileInfoClass'
 import { memo } from 'react'
+import { withBoundary } from '../../HOC/withBoundary'
 
 // window.props = [] // для сравнивания пропсов
 
@@ -35,4 +35,4 @@ const Profile = memo( (props) => {
 
 })
 
-export default Profile
+export default withBoundary(Profile)

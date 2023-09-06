@@ -7,6 +7,8 @@ import withRouter from "../../HOC/withRouter";
 import { withAuthRedirect } from "../../HOC/withAuthRedirect";
 import { compose } from "redux";
 import { getAuthorizedUserId, getIsAuth, getProfile, getProfileStatus } from "../../Redux/Selectors/profile-selector";
+import { ErrorBoundary } from "../../Utilities/Boundary/boundary";
+import { withBoundary } from "../../HOC/withBoundary";
 
 
 
@@ -25,12 +27,13 @@ class ProfileContainer extends React.Component{
     }
     
     
+    
 
     render(){
-        
+        //throw new Error("profileCrashed") //если хочешь проверить работу Предохранителей <ErrorBoundary>, то раскомментируй этот код
         return(
             
-            <Profile {...this.props} profile={this.props.profile} updateProfileStatusThunk={this.props.updateProfileStatusThunk}/> 
+           <Profile {...this.props} profile={this.props.profile} updateProfileStatusThunk={this.props.updateProfileStatusThunk}/>
             
         )
     }
@@ -71,6 +74,7 @@ const mapDispatchToProps = (dispatch) =>{
 
 // After:
 export default compose(
+    withBoundary,
     connect(mapStateToProps, mapDispatchToProps),
     withRouter,
     withAuthRedirect
