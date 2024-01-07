@@ -14,7 +14,7 @@
 .profileImage img{
     width: 130px;
     height: 130px;
-    object-fit: cover;
+    object-fit: scale-down;
     margin-bottom: 15px;
 }
 
@@ -39,3 +39,39 @@
 .status:focus{
     border: 2px solid grey;
 }
+
+
+
+.custom_file_input {
+    color: transparent;
+    width: 130px;
+    overflow: hidden;
+  }
+  .custom_file_input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom_file_input::before {
+    content: 'Change Avatar';
+    color: black;
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .custom_file_input:hover::before {
+    border-color: black;
+  }
+  .custom_file_input:active {
+    outline: 0;
+  }
+  .custom_file_input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+  }

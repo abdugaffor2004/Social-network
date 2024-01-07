@@ -21,7 +21,7 @@ const Profile = memo( (props) => {
             </div>
 
             <div className={s.container}>
-                <ProfileInfoHook {...props} isOwner={props.isOwner} profile={props.profile} updateProfileStatusThunk={props.updateProfileStatusThunk}/>
+                <ProfileInfoHook {...props} updateProfilePhotoThunk={props.updateProfilePhotoThunk} isOwner={props.isOwner} profile={props.profile} updateProfileStatusThunk={props.updateProfileStatusThunk}/>
                 
             </div>
 

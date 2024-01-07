@@ -28,6 +28,10 @@ const ProfileInfoHook = (props) => {
         setLocalStatus(value)
     }
 
+    const onPhotoChange = (event) =>{
+        props.updateProfilePhotoThunk(event.target.files[0])
+        
+    }
     
         
         if(!props.profile){
@@ -40,8 +44,8 @@ const ProfileInfoHook = (props) => {
             <div className= {s.profileInfo}>
     
                 <div className={s.profileImage}>
-                    <img src={props.profile.photos.large || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0yEOldbWv5ou8N5B8FTKj6ISTvY6qi_8ulg&usqp=CAU"} alt="profileImg"  />
-                    {props.isOwner && <div> <input type={'file'} /> </div> }   
+                    <img src={props.profile.photos.large || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0yEOldbWv5ou8N5B8FTKj6ISTvY6qi_8ulg&usqp=CAU"} alt="profileImg"  />   
+                    {props.isOwner && <div> <input className={s.custom_file_input} onChange={onPhotoChange} type={'file'} /> </div> }
                 </div>
 
                 <div className={s.profileInfo_content}>
