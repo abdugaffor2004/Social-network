@@ -5,10 +5,17 @@
     margin-top: 30px;
 }
 
-.profileInfo img{
+.profileImage{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.profileImage img{
     width: 130px;
     height: 130px;
     object-fit: cover;
+    margin-bottom: 15px;
 }
 
 .profileInfo_content{
@@ -24,12 +31,11 @@
     color: grey;
     margin: 5px 0 18px 0;
     font-size: 15px;
-}
-
-input{
-    border: 2px solid grey;
     padding: 3px 0 3px 7px;
     outline: none;
     border-radius: 5px;
-    
+}
+
+.status:focus{
+    border: 2px solid grey;
 }

@@ -39,8 +39,11 @@ const ProfileInfoHook = (props) => {
             
             <div className= {s.profileInfo}>
     
-                <img src={props.profile.photos.large || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0yEOldbWv5ou8N5B8FTKj6ISTvY6qi_8ulg&usqp=CAU"} alt="profileImg"  />
-    
+                <div className={s.profileImage}>
+                    <img src={props.profile.photos.large || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0yEOldbWv5ou8N5B8FTKj6ISTvY6qi_8ulg&usqp=CAU"} alt="profileImg"  />
+                    {props.isOwner && <div> <input type={'file'} /> </div> }   
+                </div>
+
                 <div className={s.profileInfo_content}>
     
                     <h2 className={s.name}> {props.profile.fullName} </h2>

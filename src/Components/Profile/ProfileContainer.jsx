@@ -33,7 +33,7 @@ class ProfileContainer extends React.Component{
         //throw new Error("profileCrashed") //если хочешь проверить работу Предохранителей <ErrorBoundary>, то раскомментируй этот код
         return(
             
-           <Profile {...this.props} profile={this.props.profile} updateProfileStatusThunk={this.props.updateProfileStatusThunk}/>
+           <Profile {...this.props} isOwner={!this.props.router.params.userId} profile={this.props.profile} updateProfileStatusThunk={this.props.updateProfileStatusThunk}/>
             
         )
     }
