@@ -4,7 +4,7 @@ import {
   getUsersThunkCreator,
   setCurrentPageThunkCreator,
   unfollowThunkCreator,
-} from "../../Redux/users-reducer";
+} from "../../Redux/users-reducer.ts";
 
 import FindUsersContainer_2 from "./FindUsersContainer_2";
 import { withAuthRedirect } from "../../HOC/withAuthRedirect";

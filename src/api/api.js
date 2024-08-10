@@ -50,6 +50,10 @@ export let profileApi = {
       return instance.get('profile/'+userId).then( (response) => response.data )
     },
 
+    updateProfile: (updatedProfileInfo) => {
+      return instance.put('profile/', updatedProfileInfo).then( (response) => response.data)
+    },
+
     getStatus: (userId) =>{
       return instance.get('profile/status/'+userId).then( (response) => response.data )
     },
@@ -60,7 +64,7 @@ export let profileApi = {
 
     updatePhoto: (photoFile) =>{
 
-      const formData = new FormData;
+      const formData = new FormData();
       formData.append("image", photoFile)
       return instance.put('profile/photo', formData, {
         headers:{"Content-Type":"multipart/form-data"}

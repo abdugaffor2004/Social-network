@@ -7,17 +7,42 @@ const DELETE_USER_AUTH_DATA = "auth/DELETE-USER-AUTH-DATA";
 const SET_CAPTCHA_URL = "auth/SET-CAPTCHA-URL"; // redux-ducks
 
 
+type InitialState = {
+  id: number | null,
+  eMail: string | null,
+  login: string | null,
+  isAuth: boolean,
+  captchaUrl: string | null
+}
 
-let initialState = {
-    id: null,
-    eMail: null,
-    login: null,
-    isAuth: false,
-    captchaUrl: null,
+export type SetAuthUserDataActionPayloadType ={
+  id: number,
+  eMail: string,
+  login: string
+}
+export type SetAuthUserDataActionType = {
+  type: typeof SET_AUTH_USER_DATA,
+  payload: SetAuthUserDataActionPayloadType
+}
+export type DeleteAuthUserDataActionType = {
+  type: typeof DELETE_USER_AUTH_DATA
+}
+export type SetCaptchaUrlAction = {
+  type: typeof SET_CAPTCHA_URL,
+  Url: string
+}
+
+
+let initialState: InitialState = {
+  id: null,
+  eMail: null,
+  login: null,
+  isAuth: false,
+  captchaUrl: null,
     
-};
+}; 
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action:any): InitialState => {
   switch (action.type) {
     case SET_AUTH_USER_DATA: {
     
@@ -32,7 +57,7 @@ const authReducer = (state = initialState, action) => {
       return{
         ...state,
         id: null,
-        email: null,
+        eMail: null,
         login: null,
         isAuth: false,
         captchaUrl: null
@@ -53,30 +78,29 @@ const authReducer = (state = initialState, action) => {
 
 export default authReducer;
 
-export let setAuthUserDataAC = (id, eMail, login) => {
-  return { type: SET_AUTH_USER_DATA, payload:{id, eMail, login} };
+export let setAuthUserDataAC = (id:number, eMail:string, login:string):SetAuthUserDataActionType => {
+  return { type: SET_AUTH_USER_DATA, payload: {id, eMail, login} };
 };
 
-export let deleteAuthUserData = ()=>{
+export let deleteAuthUserData = ():DeleteAuthUserDataActionType => {
   return {type: DELETE_USER_AUTH_DATA}
 }
 
-export let setCaptchaUrlAC = (Url) =>{
+export let setCaptchaUrlAC = (Url:string) =>{
   return{ type: SET_CAPTCHA_URL, Url }
 }
+
 
 
 export let authThunkCreator = () => async (dispatch) =>{
   let response = await authApi.authMe() 
 
-    if(response.resultCode === 0){
-        let {id, email, login} = response.data
-        dispatch( setAuthUserDataAC( id, email, login ) )  // Эти параметры должны быть такими же как в API
-    }
+  if(response.resultCode === 0){
+    let {id, email, login} = response.data
+    dispatch( setAuthUserDataAC( id, email, login ) )  // Эти параметры должны быть такими же как в API
+  }
 
 }
-
-
 
 export let LoginthunkCreator = (email, password, rememberMe, captchaValue) =>{
   return (dispatch) =>{
@@ -107,7 +131,6 @@ export let LogoutThunkCreator = () =>{
     } )
   }
 }
-
 
 export let captchaThunkCreator = () =>{
   return (dispatch) =>{

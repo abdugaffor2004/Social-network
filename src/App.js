@@ -13,7 +13,7 @@ import LoginPage from './Components/Login/Login';
 import React, { Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 
-import { toInitializeAppThunkCreator } from './Redux/app-reducer';
+import { toInitializeAppThunkCreator } from './Redux/app-reducer.ts';
 
 import { compose } from 'redux';
 import { withBoundary } from './HOC/withBoundary';

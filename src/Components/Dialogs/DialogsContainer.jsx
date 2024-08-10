@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   addMessageActionCreator,
 
-} from "../../Redux/dialogs-reducer";
+} from "../../Redux/dialogs-reducer.ts";
 import Dialogs from "./Dialogs";
 
 

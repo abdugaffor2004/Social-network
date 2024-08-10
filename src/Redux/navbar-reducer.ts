@@ -1,5 +1,16 @@
+type FriendsType = {
+    id: number,
+    name: string,
+    img: string
 
-let initialState =  {
+}
+
+type InitialStateType = {
+   friends: Array<FriendsType> 
+}
+
+
+let initialState: InitialStateType =  {
     friends: [
         { id: 1, name: "Dilshod", img: "https://images.unsplash.com/photo-1601979031925-424e53b6caaa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHVwcHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" },
         { id: 2, name: "Muhammed", img: "https://images.unsplash.com/photo-1591160690555-5debfba289f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cHVwcHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" },
@@ -7,7 +18,7 @@ let initialState =  {
     ]
 }
 
-const navbarReducer = (state = initialState, action) =>{
+const navbarReducer = (state = initialState, action: any): InitialStateType =>{
 
     return state
 }

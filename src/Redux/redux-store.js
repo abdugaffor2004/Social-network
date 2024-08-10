@@ -1,12 +1,12 @@
 import { applyMiddleware, combineReducers, compose, legacy_createStore } from "redux";
-import dialogsReducer from "./dialogs-reducer";
-import navbarReducer from "./navbar-reducer";
-import profileReducer from "./profile-reducer";
-import usersReducer from "./users-reducer";
-import authReducer from "./auth-reducer";
+import dialogsReducer from "./dialogs-reducer.ts";
+import navbarReducer from "./navbar-reducer.ts";
+import profileReducer from "./profile-reducer.ts";
+import usersReducer from "./users-reducer.ts";
+import authReducer from "./auth-reducer.ts";
 import thunkMiddleware from "redux-thunk";
 import { reducer as formReducer } from "redux-form";
-import appReducer from "./app-reducer";
+import appReducer from "./app-reducer.ts";
 
 let reducers = combineReducers({
     profilePage: profileReducer,

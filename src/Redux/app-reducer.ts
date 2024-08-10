@@ -1,14 +1,21 @@
-import { authThunkCreator } from "./auth-reducer";
+import { authThunkCreator } from "./auth-reducer.ts";
 
 const INITIALIZED_SUCCESS = "app/INITIALIZED-SUCCESS";
 
+type InitialStateType = {
+  isInitialized: boolean
+}
+
+export type initializedSuccessActionType = {
+  type: typeof INITIALIZED_SUCCESS
+}
 
 
-let initialState = {
+let initialState:InitialStateType = {
   isInitialized: false
 };
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
 
     case INITIALIZED_SUCCESS: {
@@ -25,7 +32,9 @@ const appReducer = (state = initialState, action) => {
 
 export default appReducer;
 
-export let initializedSuccessAC = () => {
+
+
+export let initializedSuccessAC = ():initializedSuccessActionType => {
   return { type: INITIALIZED_SUCCESS };
 };
 

@@ -1,7 +1,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import { getProfileThunkCreator, setProfileStatusThunkCreator, setUserProfileAC, updateProfilePhotoThunkCreator, updateProfileStatusThunkCreator } from "../../Redux/profile-reducer";
+import { getProfileThunkCreator, setProfileStatusThunkCreator, setUserProfileAC, updateProfileDataThunkCreator, updateProfilePhotoThunkCreator, updateProfileStatusThunkCreator } from "../../Redux/profile-reducer.ts";
 import Profile from "./Profile";
 import withRouter from "../../HOC/withRouter";
 import { withAuthRedirect } from "../../HOC/withAuthRedirect";
@@ -33,7 +33,7 @@ class ProfileContainer extends React.Component{
         //throw new Error("profileCrashed") //если хочешь проверить работу Предохранителей <ErrorBoundary>, то раскомментируй этот код
         return(
             
-           <Profile {...this.props} updateProfilePhotoThunk={this.props.updateProfilePhotoThunk} isOwner={!this.props.router.params.userId} profile={this.props.profile} updateProfileStatusThunk={this.props.updateProfileStatusThunk}/>
+           <Profile {...this.props} updateProfileDataThunk={this.props.updateProfileDataThunk} updateProfilePhotoThunk={this.props.updateProfilePhotoThunk} isOwner={!this.props.router.params.userId} profile={this.props.profile} updateProfileStatusThunk={this.props.updateProfileStatusThunk}/>
             
         )
     }
@@ -68,7 +68,9 @@ const mapDispatchToProps = (dispatch) =>{
         getProfileThunk: (userId) => dispatch(getProfileThunkCreator(userId)),
         setProfileStatusThunk: (userId) => dispatch( setProfileStatusThunkCreator(userId) ),
         updateProfileStatusThunk: (profileStatus) => dispatch( updateProfileStatusThunkCreator(profileStatus) ),
-        updateProfilePhotoThunk: (photo) => dispatch(updateProfilePhotoThunkCreator(photo))
+        updateProfilePhotoThunk: (photo) => dispatch(updateProfilePhotoThunkCreator(photo)),
+        updateProfileDataThunk: (profile) => dispatch( updateProfileDataThunkCreator(profile))
+
         
     }
 }

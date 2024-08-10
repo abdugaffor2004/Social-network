@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { LoginthunkCreator } from "../../Redux/auth-reducer"
+import { LoginthunkCreator } from "../../Redux/auth-reducer.ts"
 import LoginReduxForm from "./Form/Form"
 import s from './Login.module.css'
 import { Navigate } from "react-router-dom"

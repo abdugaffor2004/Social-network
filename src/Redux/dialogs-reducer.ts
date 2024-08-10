@@ -1,7 +1,19 @@
+import { DialogsType, MessageType } from "../types/types";
 
 const ADD_MESSAGE = "dialogs/ADD-MESSAGE";
 
-let initialState = {
+
+type InitialStateType = {
+  dialogsData: Array<DialogsType>,
+  messagesData: Array<MessageType>
+}
+
+export type AddMessageActionType = {
+  type: typeof ADD_MESSAGE,
+  messageText: string
+}
+
+let initialState: InitialStateType = {
   dialogsData: [
     {
       id: 1,
@@ -38,7 +50,7 @@ let initialState = {
 
 };
 
-const dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action:any): InitialStateType => {
   
   
   switch (action.type) {
@@ -51,7 +63,6 @@ const dialogsReducer = (state = initialState, action) => {
     // } Больше не требуется, так как используем redux-forms
 
     case ADD_MESSAGE: {
-      //debugger;
       let newMessage = {
         id: Math.floor(Math.random() *100),
         message: action.messageText,
@@ -60,7 +71,6 @@ const dialogsReducer = (state = initialState, action) => {
       return {
         ...state,
         messagesData: [...state.messagesData, newMessage],
-        newMessageText: ""
       }; 
       // Это лучший вариант
 
@@ -74,6 +84,6 @@ const dialogsReducer = (state = initialState, action) => {
 export default dialogsReducer;
 
 
-export let addMessageActionCreator = (messageText) => {
+export let addMessageActionCreator = (messageText:string): AddMessageActionType => {
   return { type: ADD_MESSAGE, messageText };
 };
